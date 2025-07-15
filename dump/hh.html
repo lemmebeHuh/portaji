@@ -11,13 +11,14 @@
         /* --- PALET & FONT BAUHAUS --- */
         :root {
             --color-bg: #f5f5f5;
-            --color-bg-transparent: rgba(245, 245, 245, 0.9);
+            /* --color-bg-transparent: rgba(245, 245, 245, 0.9); */
             --color-text: #1c1c1c;
             --color-primary-yellow: #ffd600;
             --color-primary-red: #d90429;
             --color-primary-green: #25D366;
             --color-primary-blue: #005f73;
             --font-main: 'Jost', sans-serif;
+            
         }
 
         /* --- GAYA DASAR --- */
@@ -25,10 +26,13 @@
 
         html {
             scroll-behavior: smooth;
-            background-image: url('background.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+        }
+        .gradient-wrapper {
+            background: linear-gradient(50deg, var(--color-primary-blue), var(--color-primary-red), var(--color-primary-yellow));
+            padding: 4px; /* Ketebalan outline gradien */
         }
 
         body {
@@ -80,11 +84,11 @@
         }
 
         .container {
-            border: 4px solid var(--color-text);
-            padding: 30px;
+            border: none; /* Menghilangkan border solid lama */
+            padding: 40px;
             position: relative;
             z-index: 2;
-            background-color: var(--color-bg);
+            background-color: var(--color-bg); 
         }
         
         h1, h2, h3, p, a {
@@ -133,12 +137,14 @@
             line-height: 1;
             text-transform: uppercase;
         }
-
-        .hero-text-content .tagline {
+.hero-text-content .tagline {
             font-size: 1.2em;
             font-weight: 500;
-            margin: 10px 0 0 3px;
+            margin: 10px 0 20px 4px;
             letter-spacing: 1px;
+            background: linear-gradient(90deg, #f8ff00 0%, #3ad59f 100%);
+            padding: 5px 10px;
+            display: inline-block;
         }
         
         .hero-text-content .profile-text {
@@ -162,12 +168,13 @@
             border: 3px solid var(--color-text);
             font-weight: 500;
             font-size: 1em;
-            transition: background-color 0.2s ease, color 0.2s ease;
+            transition: all 0.2s ease;
         }
         
         .link-button:hover {
             background-color: var(--color-text);
             color: var(--color-bg);
+            transform: translateY(-3px); /* Efek angkat sedikit */
         }
         
         .link-button.yellow:hover { background-color: var(--color-primary-yellow); color: var(--color-text); }
@@ -266,7 +273,7 @@
             body { padding: 15px; }
             .container { padding: 20px; }
             
-            
+            .gradient-wrapper { padding: 3px; }
             .hero-section {
                 flex-direction: column-reverse; /* Membalik urutan: teks di atas, foto di bawah */
                 align-items: center; /* Memusatkan semua item */
@@ -296,7 +303,7 @@
     
     <div class="shape circle"></div>
     <div class="shape rectangle"></div>
-
+<div class="gradient-wrapper">
     <main class="container">
 
         <header class="hero-section">
@@ -379,6 +386,7 @@
         </section>
 
     </main>
+</div>
 
 </body>
 </html>
