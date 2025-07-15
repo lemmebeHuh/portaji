@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sang Kala Aji // Web Developer & Creative Content Creator</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* --- PALET & FONT BAUHAUS --- */
+        :root {
+            --color-bg: #f5f5f5; /* Off-white */
+            --color-text: #1c1c1c; /* Black */
+            --color-primary-yellow: #ffd600;
+            --color-primary-red: #d90429;
+            --color-primary-blue: #005f73;
+            --font-main: 'Jost', sans-serif; /* Font sans-serif geometris */
+        }
+
+        /* --- GAYA DASAR --- */
+        @import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap');
+
+        html {
+            scroll-behavior: smooth;
+            /* Terapkan gambar dan efek hitam-putih di sini */
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Gambar diam saat scroll */
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* --- LAYOUT UTAMA --- */
+        .container {
+            border: 4px solid var(--color-text);
+            padding: 30px;
+        }
+        
+        h1, h2, h3, p, a {
+            margin: 0;
+            padding: 0;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* --- HEADER / HERO --- */
+        .hero-section {
+            padding-bottom: 40px;
+            border-bottom: 4px solid var(--color-text);
+        }
+
+        .hero-section h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        .hero-section .tagline {
+            font-size: 1.2em;
+            font-weight: 500;
+            margin: 10px 0 0 3px;
+            letter-spacing: 1px;
+        }
+        
+        .hero-section .profile-text {
+            font-size: 1.1em;
+            max-width: 65ch; /* Batasi lebar teks agar mudah dibaca */
+            margin-top: 20px;
+        }
+        
+        /* --- LINK UTAMA --- */
+        .primary-links {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .link-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border: 3px solid var(--color-text);
+            font-weight: 500;
+            font-size: 1em;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        
+        .link-button:hover {
+            background-color: var(--color-text);
+            color: var(--color-bg);
+        }
+        
+        .link-button.yellow:hover { background-color: var(--color-primary-yellow); color: var(--color-text); }
+        .link-button.red:hover { background-color: var(--color-primary-red); color: var(--color-bg); }
+        .link-button.blue:hover { background-color: var(--color-primary-blue); color: var(--color-bg); }
+        
+        /* --- KEAHLIAN / SKILLS --- */
+        .section-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 10px 0;
+            border-bottom: 3px solid var(--color-text);
+            margin: 40px 0 20px 0;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .skill-card {
+            border: 3px solid var(--color-text);
+            padding: 20px;
+        }
+
+        .skill-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skill-card ul {
+            list-style: none;
+            padding: 0;
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+        
+        .skill-card ul li {
+            margin-bottom: 8px;
+        }
+        
+        /* --- PROYEK & PENGALAMAN --- */
+        .projects-container {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .project-card {
+            padding: 20px;
+            border: 3px solid var(--color-text);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .project-card h3 {
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+        
+        .project-card .role {
+            font-size: 1.1em;
+            font-weight: 500;
+            background-color: var(--color-primary-yellow);
+            padding: 5px 10px;
+            align-self: flex-start; /* Agar background tidak full-width */
+        }
+        
+        .project-card p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .project-tags span {
+            background-color: var(--color-bg);
+            border: 2px solid var(--color-text);
+            padding: 5px 10px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--color-text);
+            filter: grayscale(100%); /* Efek Hitam-Putih */
+            transition: filter 0.3s ease;
+        }
+
+        .profile-photo:hover {
+            filter: grayscale(0%); /* Warna kembali saat disentuh mouse */
+        }
+        
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            .container { padding: 20px; }
+            
+            .hero-section h1 { font-size: 2.5em; }
+            
+            .skills-grid {
+                grid-template-columns: 1fr; /* Stack skill cards on mobile */
+            }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <main class="container">
+
+        <header class="hero-section">
+            <img src="73cbd604-4c48-4f2d-b55c-0674703c2131.jpg" alt="Foto Sang Kala Aji" class="profile-photo">
+            <h1>SANG KALA AJI</h1> 
+            <p class="tagline">Web Developer | Creative Content Creator</p> 
+            <p class="profile-text">
+                Seorang talenta hibrida yang menggabungkan dunia kreatif dan teknologi. Sebagai lulusan MSIB Bangkit (Cloud Computing), saya memiliki keahlian teknis membangun aplikasi web , dan sebagai content creator, saya terampil menghidupkan cerita melalui video dan audio.
+            </p>
+            <div class="primary-links">
+                <a href="mailto:sangkalaaji98@gmail.com" class="link-button yellow"><i class="fa-solid fa-envelope"></i> Email</a> 
+                <a href="https://linkedin.com/in/sangkalaaji" target="_blank" class="link-button blue"><i class="fa-brands fa-linkedin"></i> LinkedIn</a> 
+                <a href="https://github.com/lemmebeHuh" target="_blank" class="link-button"><i class="fa-brands fa-github"></i> GitHub</a> 
+                <a href="https://wa.me/6285795603927" target="_blank" class="link-button red"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a> 
+            </div>
+        </header>
+
+        <section>
+            <h2 class="section-title">KEAHLIAN INTI</h2>
+            <div class="skills-grid">
+                <div class="skill-card" style="border-color: var(--color-primary-blue);">
+                    <h3><i class="fa-solid fa-cloud"></i> Web Development</h3>
+                    <ul>
+                        <li>Laravel, PHP, Node.js, Python</li> 
+                        <li>Google Cloud Platform (GCP)</li> 
+                        <li>MySQL, HTML, CSS</li> 
+                        <li>Git & GitHub</li> 
+                    </ul>
+                </div>
+                <div class="skill-card" style="border-color: var(--color-primary-red);">
+                    <h3><i class="fa-solid fa-camera-retro"></i> Produksi Kreatif</h3>
+                    <ul>
+                        <li>Video Editing (Adobe Premiere Pro & CapCut)</li> 
+                        <li>Desain Grafis (Canva & Photoshop)</li> 
+                        <li>Komunikasi Kreatif & Kolaborasi</li>  
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">PROYEK & PENGALAMAN</h2>
+            <div class="projects-container">
+            
+                <article class="project-card">
+                    <h3>Capstone Project: SEFR (Anti-Online Gambling App)</h3> 
+                    <span class="role">Cloud Engineer @Bangkit Academy 2025</span>  
+                    <p>Berkolaborasi dalam tim multi-disiplin untuk membangun aplikasi pencegah judi online berbasis AI. Saya bertanggung jawab merancang arsitektur cloud di GCP, mengembangkan API, dan mendeploy layanan dengan model Machine Learning.</p>
+                    <div class="project-tags">
+                        <span>GCP</span><span>Node.js</span><span>Cloud Computing</span><span>Team Collaboration</span><span>Video Editting</span> 
+                    </div>
+                </article>
+                
+                <article class="project-card">
+                    <h3>Website & Sistem Pelacakan Servis Realtime</h3> 
+                    <span class="role">Web Developer @Pangkalan Komputer ID</span>
+                    <p>Merancang dan mengembangkan company profile beserta sistem pelacakan servis realtime untuk meningkatkan transparansi dan pengalaman pelanggan.</p>
+                    <div class="project-tags">
+                        <span>Laravel</span><span>PHP</span><span>MySQL</span><span>HTML/CSS</span>  
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <h3>Freelance Content Creator</h3> 
+                    <span class="role">Lizzard.id</span> 
+                    <p>Mengedit dan menyusun video, membuat animasi 2D/3D untuk produk, serta mengkomposisi musik latar yang sesuai untuk berbagai kebutuhan konten.</p>
+                    <div class="project-tags">
+                        <span>Adobe Premiere Pro</span><span>Photoshop</span><span>FL Studio</span><span>Video Editing</span>
+                    </div>
+                </article>
+                
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

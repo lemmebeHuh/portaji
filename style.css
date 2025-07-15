@@ -1,0 +1,98 @@
+/* --- BAGIAN KUSTOMISASI --- */
+/* Ganti nilai di bawah ini untuk mengubah tema website dengan mudah! */
+:root {
+    --bg-grad-start: #89CFF0; /* Warna gradasi awal (Baby Blue) */
+    --bg-grad-end: #6495ED; /* Warna gradasi akhir (Cornflower Blue) */
+    --card-bg: #ffffff; /* Warna dasar tombol */
+    --text-color: #333333; /* Warna teks utama */
+    --accent-color: #4682B4; /* Warna aksen untuk hover (Steel Blue) */
+    --font-main: 'Poppins', sans-serif;
+}
+
+/* --- GAYA DASAR --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    font-family: var(--font-main);
+    color: var(--text-color);
+    
+    /* Background Gradasi (Fade) */
+    background: linear-gradient(135deg, var(--bg-grad-start), var(--bg-grad-end));
+    background-attachment: fixed; /* Membuat gradasi tetap saat scroll */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    margin: 0;
+    box-sizing: border-box; /* Memastikan padding tidak merusak layout */
+}
+
+/* --- LAYOUT UTAMA --- */
+.container {
+    width: 100%;
+    max-width: 600px; /* Batas lebar maksimum di desktop */
+    text-align: center;
+}
+
+.profile-picture {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid rgba(255, 255, 255, 0.8); /* Border putih transparan */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-size: 1.75em;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    color: #fff; /* Warna putih agar kontras dengan background */
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+}
+
+p {
+    font-size: 1em;
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.9); /* Warna putih semi-transparan */
+}
+
+/* --- GAYA TOMBOL LINK --- */
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Jarak antar tombol */
+}
+
+.link-card {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    
+    padding: 15px 25px;
+    border-radius: 50px; /* Membuat tombol sangat rounded (bentuk kapsul) */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; /* Jarak antara ikon dan teks */
+
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.link-card:hover {
+    transform: scale(1.05); /* Sedikit membesar saat disentuh mouse */
+    background-color: var(--accent-color);
+    color: #fff; /* Mengubah warna teks menjadi putih saat hover */
+}
+
+/* --- GAYA IKON DI DALAM TOMBOL --- */
+.link-card i {
+    font-size: 1.5em; /* Ukuran ikon sedikit lebih besar */
+}
