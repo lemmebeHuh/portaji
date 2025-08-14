@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karya Video - Sang Kala Aji</title>
-    <link rel="icon"  href="sasas.png">
+    <title>Karya - Sang Kala Aji</title>
+    <link rel="icon" href="sasas.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- PALET & FONT (KONSISTEN DENGAN TEMA AWAL) --- */
+        /* --- PALET & FONT --- */
         :root {
             --color-bg: #f5f5f5;
             --color-text: #1c1c1c;
             --color-primary-yellow: #ffd600;
             --color-primary-red: #d90429;
-            --color-primary-green: #25D366;
             --color-primary-blue: #005f73;
             --font-main: 'Jost', sans-serif;
         }
@@ -31,7 +30,7 @@
             padding: 40px;
         }
         
-        /* --- WRAPPER & CONTAINER (SAMA DENGAN HALAMAN UTAMA) --- */
+        /* --- WRAPPER & CONTAINER --- */
         .gradient-wrapper {
             background: linear-gradient(135deg, var(--color-primary-blue), var(--color-primary-red), var(--color-primary-yellow));
             padding: 4px;
@@ -39,7 +38,6 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-        
         .container {
             padding: 40px;
             background-color: var(--color-bg);
@@ -50,22 +48,18 @@
             text-align: center;
             border-bottom: 3px solid #ddd;
             padding-bottom: 30px;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             position: relative;
         }
-
         .page-header h1 {
             font-size: 3em;
             text-transform: uppercase;
-            margin: 0;
         }
-
         .page-header p {
             font-size: 1.1em;
             margin-top: 10px;
             color: #555;
         }
-        
         .back-link {
             display: inline-flex;
             align-items: center;
@@ -73,59 +67,75 @@
             text-decoration: none;
             font-weight: 500;
             color: var(--color-text);
-            transition: color 0.2s ease;
             position: absolute;
             top: 10px;
             left: 0;
         }
-        .back-link:hover {
-            color: var(--color-primary-blue);
+
+        /* --- FILTER KATEGORI --- */
+        .filter-menu {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+        .filter-btn {
+            background-color: #fff;
+            border: 3px solid #eee;
+            padding: 8px 20px;
+            font-family: var(--font-main);
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .filter-btn:hover {
+            border-color: var(--color-text);
+        }
+        .filter-btn.active {
+            background-color: var(--color-text);
+            color: #fff;
+            border-color: var(--color-text);
         }
 
-        /* --- GALERI VIDEO --- */
-        .video-gallery {
+        /* --- GALERI KARYA --- */
+        .portfolio-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
 
-        .video-card {
+        .portfolio-card {
             background-color: #fff;
             border: 3px solid #eee;
             border-radius: 4px;
             display: flex;
             flex-direction: column;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.4s ease;
         }
-        .video-card:hover {
+        .portfolio-card.hide {
+            display: none;
+        }
+        .portfolio-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 12px 20px rgba(0,0,0,0.1);
         }
+        
         .thumbnail-container {
             position: relative;
             display: block;
         }
-        .video-card img {
+        .portfolio-card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
             display: block;
             border-top-left-radius: 4px;
             border-top-right-radius: 4px;
-            /* [PENTING] Latar belakang sementara saat gambar dimuat */
             background-color: #eee;
         }
-
-        .video-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-            border-top-left-radius: 4px;
-            border-top-right-radius: 4px;
-        }
-        
-        .play-icon {
+        .overlay-icon {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -136,69 +146,62 @@
             transition: opacity 0.3s ease;
             text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
-
-        .thumbnail-container:hover .play-icon {
+        .thumbnail-container:hover .overlay-icon {
             opacity: 1;
         }
 
-        .video-info {
+        .card-info {
             padding: 25px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
-
-        .video-info h3 {
+        .card-info h3 {
             font-size: 1.5em;
             margin: 0 0 10px 0;
+            min-height: 1.2em;
         }
-
-        .video-info p {
+        .card-info p {
             font-size: 1em;
             line-height: 1.6;
             margin: 0 0 20px 0;
             flex-grow: 1;
             color: #444;
         }
-        
-        .watch-button {
+        .action-button {
             display: inline-block;
             text-align: center;
             padding: 10px 20px;
             border: 3px solid var(--color-text);
             font-weight: 700;
-            font-size: 1em;
             text-decoration: none;
             color: var(--color-text);
             transition: all 0.2s ease;
-            align-self: flex-start; /* Tombol tidak meregang penuh */
+            align-self: flex-start;
         }
-        
-        .watch-button:hover {
+        .action-button:hover {
             background-color: var(--color-text);
             color: var(--color-bg);
+        }
+        
+        /* --- FOOTER --- */
+        .site-footer {
+            padding-top: 40px;
+            margin-top: 40px;
+            border-top: 4px solid var(--color-text);
+            display: flex;
+            justify-content: center;
+        }
+        .footer-logo {
+            width: 50px;
+            height: auto;
         }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             body { padding: 20px; }
-            .container { padding: 25px; }
             .back-link { position: static; margin-bottom: 20px; justify-content: center; }
-            .page-header h1 { font-size: 2.2em; }
         }
-        .site-footer {
-    padding-top: 40px;
-    margin-top: 40px;
-    border-top: 4px solid var(--color-text);
-    display: flex;
-    justify-content: center; /* Mendorong logo ke kanan */
-
-}
-
-.footer-logo {
-    width: 50px; /* Ukuran logo bisa dibuat lebih kecil di sini */
-    height: auto;
-}
     </style>
 </head>
 <body>
@@ -208,198 +211,218 @@
 
             <header class="page-header">
                 <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
-                <h1>Karya Video</h1>
+                <h1>Galeri Karya</h1>
                 <p>Kumpulan proyek visual yang pernah saya kerjakan.</p>
             </header>
 
-            <section class="video-gallery">
+            <div class="filter-menu">
+                <button class="filter-btn active" data-filter="semua">Semua</button>
+                <button class="filter-btn" data-filter="video">Video</button>
+                <button class="filter-btn" data-filter="desain">Desain & Fotografi</button>
+                <button class="filter-btn" data-filter="website">Website</button>
+            </div>
 
-                
+            <section class="portfolio-gallery">
 
-                <!-- CONTOH KARTU VIDEO 3 -->
-                <article class="video-card">
+                <!-- KATEGORI: VIDEO -->
+                <article class="portfolio-card" data-category="video">
                     <a href="https://youtu.be/5aWfy-8EXRY?si=VXwLDRHey2RJRze7" target="_blank" class="thumbnail-container">
                         <img src="" alt="Thumbnail Video">
-                        <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                        <div class="overlay-icon"><i class="fa-solid fa-play"></i></div>
                     </a>
-                    <div class="video-info">
-                        <h3></h3> <!-- Judul akan diisi oleh JavaScript -->
+                    <div class="card-info">
+                        <h3></h3>
                         <p>Video edukasi yang membahas sejarah dan teknologi di balik komputer generasi kedua.</p>
-                        <a href="https://youtu.be/5aWfy-8EXRY?si=VXwLDRHey2RJRze7" target="_blank" class="watch-button">
-                            Tonton di YouTube
-                        </a>
+                        <a href="https://youtu.be/5aWfy-8EXRY?si=VXwLDRHey2RJRze7" target="_blank" class="action-button">Tonton Video</a>
                     </div>
                 </article>
-                <article class="video-card">
+                <article class="portfolio-card" data-category="video">
                     <a href="https://youtu.be/kAj4HTN6Dug?si=wTQeRu1gudVtgUxQ" target="_blank" class="thumbnail-container">
                         <img src="" alt="Thumbnail Video">
-                        <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                        <div class="overlay-icon"><i class="fa-solid fa-play"></i></div>
                     </a>
-                    <div class="video-info">
-                        <h3></h3> <!-- Judul akan diisi oleh JavaScript -->
+                    <div class="card-info">
+                        <h3></h3>
                         <p>Video penjelasan yang mengupas tuntas model bisnis e-commerce (B2B, B2C, C2C, C2B).</p>
-                        <a href="https://youtu.be/kAj4HTN6Dug?si=wTQeRu1gudVtgUxQ" target="_blank" class="watch-button">
-                            Tonton di YouTube
-                        </a>
+                        <a href="https://youtu.be/kAj4HTN6Dug?si=wTQeRu1gudVtgUxQ" target="_blank" class="action-button">Tonton Video</a>
                     </div>
                 </article>
-                <article class="video-card">
+                <article class="portfolio-card" data-category="video">
                     <a href="https://youtu.be/dL-aE9iplmU?si=8Co1AwFYdcDjfJqc" target="_blank" class="thumbnail-container">
                         <img src="" alt="Thumbnail Video">
-                        <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                        <div class="overlay-icon"><i class="fa-solid fa-play"></i></div>
                     </a>
-                    <div class="video-info">
-                        <h3></h3> <!-- Judul akan diisi oleh JavaScript -->
+                    <div class="card-info">
+                        <h3></h3>
                         <p>Mengulas bagaimana adopsi teknologi pada Sistem Informasi Akuntansi mentransformasi bisnis modern.</p>
-                        <a href="https://youtu.be/dL-aE9iplmU?si=8Co1AwFYdcDjfJqc" target="_blank" class="watch-button">
-                            Tonton di YouTube
-                        </a>
+                        <a href="https://youtu.be/dL-aE9iplmU?si=8Co1AwFYdcDjfJqc" target="_blank" class="action-button">Tonton Video</a>
                     </div>
                 </article>
-
-                <!-- CONTOH KARTU VIDEO 3 -->
-                <article class="video-card">
-                    <a href="https://youtu.be/wM7NZPF2oAk?si=ueKXrn1JywEV8GH5" target="_blank" class="thumbnail-container">
-                        <img src="" alt="Thumbnail Video">
-                        <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                <article class="portfolio-card" data-category="website">
+                    <a href="pangkalankomputer.id" target="_blank" class="thumbnail-container">
+                        <img src="home.png" alt="Gambar Website">
+                        <div class="overlay-icon"><i class="fa-solid fa-globe"></i></div>
                     </a>
-                    <div class="video-info">
-                        <h3></h3> <!-- Judul akan diisi oleh JavaScript -->
-                        <p>Recap kegiatan bisnis susu segar yang dimulai hanya dengan sebuah sepeda.</p>
-                        <a href="https://youtu.be/wM7NZPF2oAk?si=ueKXrn1JywEV8GH5" target="_blank" class="watch-button">
-                            Tonton di YouTube
-                        </a>
-                    </div>
-                </article>
-                <article class="video-card">
-                    <a href="https://youtu.be/Sr-MO8FX9D4?si=5DFzSwkTBCMsPwW5" target="_blank" class="thumbnail-container">
-                        <img src="" alt="Thumbnail Video">
-                        <div class="play-icon"><i class="fa-solid fa-play"></i></div>
-                    </a>
-                    <div class="video-info">
-                        <h3></h3> <!-- Judul akan diisi oleh JavaScript -->
-                        <p>Sebuah aransemen ulang instrumental dari lagu K-HipHop populer, 'Meteor' oleh Changmo.</p>
-                        <a href="https://youtu.be/Sr-MO8FX9D4?si=5DFzSwkTBCMsPwW5" target="_blank" class="watch-button">
-                            Tonton di YouTube
-                        </a>
-                    </div>
-                </article>
-                <article class="video-card">
-                    <a href="https://youtu.be/5TH1MNS3hJE?si=WF8Av_J5wRfd_fnf" target="_blank" class="thumbnail-container">
-                        <img src="" alt="Thumbnail Video">
-                        <div class="play-icon"><i class="fa-solid fa-play"></i></div>
-                    </a>
-                    <div class="video-info">
-                        <h3></h3> <!-- Judul akan diisi oleh JavaScript -->
-                        <p>Mengintip proses kreatif dan teknis di balik layar pembuatan film pendek 'The Lonely Soul'.</p>
-                        <a href="https://youtu.be/5TH1MNS3hJE?si=WF8Av_J5wRfd_fnf" target="_blank" class="watch-button">
-                            Tonton di YouTube
-                        </a>
-                    </div>
-                </article>
-                <article class="video-card">
-                    <a href="https://youtu.be/q_0O0lq3dWQ?si=-TLMek-fXcaOfWKh" target="_blank" class="thumbnail-container">
-                        <img src="" alt="Thumbnail Video">
-                        <div class="play-icon"><i class="fa-solid fa-play"></i></div>
-                    </a>
-                    <div class="video-info">
-                        <h3></h3> <!-- Judul akan diisi oleh JavaScript -->
-                        <p>Episode WartaProject yang mengupas fenomena viralnya game cacing melalui format wawancara.</p>
-                        <a href="https://youtu.be/q_0O0lq3dWQ?si=-TLMek-fXcaOfWKh" target="_blank" class="watch-button">
-                            Tonton di YouTube
-                        </a>
-                    </div>
-                </article>
-                <article class="video-card">
-                    <a href="https://youtu.be/axGEwlKJ1IE?si=v9EtlyOMxiRYJm5s" target="_blank" class="thumbnail-container">
-                        <img src="" alt="Thumbnail Video">
-                        <div class="play-icon"><i class="fa-solid fa-play"></i></div>
-                    </a>
-                    <div class="video-info">
-                        <h3></h3> <!-- Judul akan diisi oleh JavaScript -->
-                        <p>Sebuah film pendek naratif yang mengisahkan bagaimana sebuah candaan menjadi awal dari cinta.</p>
-                        <a href="https://youtu.be/axGEwlKJ1IE?si=v9EtlyOMxiRYJm5s" target="_blank" class="watch-button">
-                            Tonton di YouTube
-                        </a>
-                    </div>
-                </article>
-                <article class="video-card">
-                    <a href="https://youtu.be/Yco7jczxj_Q?si=8gvBmvPNo748LuMa" target="_blank" class="thumbnail-container">
-                        <img src="" alt="Thumbnail Video">
-                        <div class="play-icon"><i class="fa-solid fa-play"></i></div>
-                    </a>
-                    <div class="video-info">
-                        <h3></h3> <!-- Judul akan diisi oleh JavaScript -->
-                        <p>Aransemen ulang dan cover lagu nostalgia dari serial legendaris Doraemon versi Indonesia.</p>
-                        <a href="https://youtu.be/Yco7jczxj_Q?si=8gvBmvPNo748LuMa" target="_blank" class="watch-button">
-                            Tonton di YouTube
-                        </a>
+                    <div class="card-info">
+                        <h3>Website Company Profile</h3>
+                        <p>Pengembangan website company profile untuk klien, lengkap dengan sistem live tracker service.</p>
+                        <a href="pangkalankomputer.id" target="_blank" class="action-button">Kunjungi Situs</a>
                     </div>
                 </article>
                 
+                <!-- KATEGORI: FOTOGRAFI -->
+                <article class="portfolio-card" data-category="desain">
+                    <a href="https://drive.google.com/file/d/1Leh7B8bX-mJLbPi3HnWSMOWMOox0RQUb/view?usp=sharing"" target="_blank" class="thumbnail-container">
+                        <img src="hoasd (1).jpg" alt="Gambar Fotografi">
+                        <div class="overlay-icon"><i class="fa-solid fa-camera"></i></div>
+                    </a>
+                    <div class="card-info">
+                        <h3>Gallery Desain & Fotografi</h3>
+                        <p>Seri desain grafis dan fotografi yang menangkap momen-momen unik.</p>
+                        <a href="https://drive.google.com/file/d/1Leh7B8bX-mJLbPi3HnWSMOWMOox0RQUb/view?usp=sharing" target="_blank" class="action-button">Lihat Galeri</a>
+                    </div>
+                </article>
+                <article class="portfolio-card" data-category="video">
+                    <a href="https://youtu.be/wM7NZPF2oAk?si=ueKXrn1JywEV8GH5" target="_blank" class="thumbnail-container">
+                        <img src="" alt="Thumbnail Video">
+                        <div class="overlay-icon"><i class="fa-solid fa-play"></i></div>
+                    </a>
+                    <div class="card-info">
+                        <h3></h3>
+                        <p>Recap kegiatan bisnis susu segar yang dimulai hanya dengan sebuah sepeda.</p>
+                        <a href="https://youtu.be/wM7NZPF2oAk?si=ueKXrn1JywEV8GH5" target="_blank" class="action-button">Tonton Video</a>
+                    </div>
+                </article>
+                <article class="portfolio-card" data-category="video">
+                    <a href="https://youtu.be/Sr-MO8FX9D4?si=5DFzSwkTBCMsPwW5" target="_blank" class="thumbnail-container">
+                        <img src="" alt="Thumbnail Video">
+                        <div class="overlay-icon"><i class="fa-solid fa-play"></i></div>
+                    </a>
+                    <div class="card-info">
+                        <h3></h3>
+                        <p>Sebuah aransemen ulang instrumental dari lagu K-HipHop populer, 'Meteor' oleh Changmo.</p>
+                        <a href="https://youtu.be/Sr-MO8FX9D4?si=5DFzSwkTBCMsPwW5" target="_blank" class="action-button">Tonton Video</a>
+                    </div>
+                </article>
+                <article class="portfolio-card" data-category="video">
+                    <a href="https://youtu.be/5TH1MNS3hJE?si=WF8Av_J5wRfd_fnf" target="_blank" class="thumbnail-container">
+                        <img src="" alt="Thumbnail Video">
+                        <div class="overlay-icon"><i class="fa-solid fa-play"></i></div>
+                    </a>
+                    <div class="card-info">
+                        <h3></h3>
+                        <p>Mengintip proses kreatif dan teknis di balik layar pembuatan film pendek 'The Lonely Soul'.</p>
+                        <a href="https://youtu.be/5TH1MNS3hJE?si=WF8Av_J5wRfd_fnf" target="_blank" class="action-button">Tonton Video</a>
+                    </div>
+                </article>
+                <article class="portfolio-card" data-category="video">
+                    <a href="https://youtu.be/q_0O0lq3dWQ?si=-TLMek-fXcaOfWKh" target="_blank" class="thumbnail-container">
+                        <img src="" alt="Thumbnail Video">
+                        <div class="overlay-icon"><i class="fa-solid fa-play"></i></div>
+                    </a>
+                    <div class="card-info">
+                        <h3></h3>
+                        <p>Episode WartaProject yang mengupas fenomena viralnya game cacing melalui format wawancara.</p>
+                        <a href="https://youtu.be/q_0O0lq3dWQ?si=-TLMek-fXcaOfWKh" target="_blank" class="action-button">Tonton Video</a>
+                    </div>
+                </article>
+                <article class="portfolio-card" data-category="video">
+                    <a href="https://youtu.be/axGEwlKJ1IE?si=v9EtlyOMxiRYJm5s" target="_blank" class="thumbnail-container">
+                        <img src="" alt="Thumbnail Video">
+                        <div class="overlay-icon"><i class="fa-solid fa-play"></i></div>
+                    </a>
+                    <div class="card-info">
+                        <h3></h3>
+                        <p>Sebuah film pendek naratif yang mengisahkan bagaimana sebuah candaan menjadi awal dari cinta.</p>
+                        <a href="https://youtu.be/axGEwlKJ1IE?si=v9EtlyOMxiRYJm5s" target="_blank" class="action-button">Tonton Video</a>
+                    </div>
+                </article>
+                <article class="portfolio-card" data-category="video">
+                    <a href="https://youtu.be/Yco7jczxj_Q?si=8gvBmvPNo748LuMa" target="_blank" class="thumbnail-container">
+                        <img src="" alt="Thumbnail Video">
+                        <div class="overlay-icon"><i class="fa-solid fa-play"></i></div>
+                    </a>
+                    <div class="card-info">
+                        <h3></h3>
+                        <p>Aransemen ulang dan cover lagu nostalgia dari serial legendaris Doraemon versi Indonesia.</p>
+                        <a href="https://youtu.be/Yco7jczxj_Q?si=8gvBmvPNo748LuMa" target="_blank" class="action-button">Tonton Video</a>
+                    </div>
+                </article>
 
-                <!-- Tambahkan lebih banyak kartu video di sini -->
+                <!-- KATEGORI: WEBSITE -->
+                
 
             </section>
- <footer class="site-footer">
-            <img src="sasas.png" alt="Logo Sang Kala Aji" class="footer-logo">
-        </footer>
+            
+            <footer class="site-footer">
+                <img src="sasas.png" alt="Logo Sang Kala Aji" class="footer-logo">
+            </footer>
         </main>
     </div>
- <!-- [BARU] SKRIP JAVASCRIPT UNTUK THUMBNAIL OTOMATIS -->
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const videoCards = document.querySelectorAll('.video-card');
+            // --- BAGIAN FILTER ---
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const portfolioCards = document.querySelectorAll('.portfolio-card');
 
-            videoCards.forEach(card => {
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    const filter = button.getAttribute('data-filter');
+
+                    portfolioCards.forEach(card => {
+                        const category = card.getAttribute('data-category');
+                        if (filter === 'semua' || filter === category) {
+                            card.classList.remove('hide');
+                        } else {
+                            card.classList.add('hide');
+                        }
+                    });
+                });
+            });
+
+            // --- BAGIAN OTOMATISASI KARTU VIDEO ---
+            portfolioCards.forEach(card => {
+                if (card.getAttribute('data-category') !== 'video') return;
+
                 const videoLinkElement = card.querySelector('.thumbnail-container');
                 if (!videoLinkElement) return;
 
                 const videoLink = videoLinkElement.href;
                 const thumbnailImage = card.querySelector('img');
-                const videoTitleElement = card.querySelector('.video-info h3');
+                const videoTitleElement = card.querySelector('.card-info h3');
                 
                 let videoId = '';
-                const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+                const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/|youtube.com\/shorts\/)([a-zA-Z0-9_-]{11})/;
                 const match = videoLink.match(regex);
-                if (match) {
-                    videoId = match[1];
-                }
+                if (match) videoId = match[1];
 
                 if (videoId) {
-                    // --- Logika untuk Thumbnail (Tetap sama) ---
                     const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
                     thumbnailImage.src = thumbnailUrl;
                     thumbnailImage.onerror = function() {
-                        this.src = 'https://placehold.co/600x400/eee/ccc?text=Thumbnail+Error';
-                        this.alt = 'Gagal memuat thumbnail';
+                        this.src = 'https://placehold.co/600x400/eee/ccc?text=Error';
                     };
-                    thumbnailImage.alt = 'Thumbnail untuk video ' + videoId;
+                    thumbnailImage.alt = 'Thumbnail untuk video';
 
-                    // --- [BARU] Logika untuk mengambil Judul Video ---
                     if (videoTitleElement) {
                         videoTitleElement.textContent = 'Memuat judul...';
-                        
-                        // URL untuk mengambil data oEmbed dari YouTube melalui proxy untuk menghindari masalah CORS
                         const oEmbedUrl = `https://www.youtube.com/oembed?url=http://www.youtube.com/watch?v=${videoId}&format=json`;
                         const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(oEmbedUrl)}`;
-
+                        
                         fetch(proxyUrl)
-                            .then(response => {
-                                if (response.ok) return response.json();
-                                throw new Error('Network response was not ok.');
-                            })
+                            .then(response => response.json())
                             .then(data => {
-                                // Data dari YouTube ada di dalam properti 'contents'
                                 const youtubeData = JSON.parse(data.contents);
-                                if (youtubeData.title) {
+                                if (youtubeData && youtubeData.title) {
                                     videoTitleElement.textContent = youtubeData.title;
                                 } else {
                                     videoTitleElement.textContent = 'Judul tidak tersedia';
                                 }
                             })
-                            .catch(error => {
-                                console.error('Gagal mengambil judul video:', error);
+                            .catch(() => {
                                 videoTitleElement.textContent = 'Gagal memuat judul';
                             });
                     }
