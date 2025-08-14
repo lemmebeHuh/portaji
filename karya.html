@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karya Video - Sang Kala Aji</title>
+    <link rel="icon"  href="sasas.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- PALET & FONT (KONSISTEN DENGAN TEMA AWAL) --- */
+        :root {
+            --color-bg: #f5f5f5;
+            --color-text: #1c1c1c;
+            --color-primary-yellow: #ffd600;
+            --color-primary-red: #d90429;
+            --color-primary-green: #25D366;
+            --color-primary-blue: #005f73;
+            --font-main: 'Jost', sans-serif;
+        }
+
+        /* --- GAYA DASAR --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-main);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            margin: 0;
+            padding: 40px;
+        }
+        
+        /* --- WRAPPER & CONTAINER (SAMA DENGAN HALAMAN UTAMA) --- */
+        .gradient-wrapper {
+            background: linear-gradient(135deg, var(--color-primary-blue), var(--color-primary-red), var(--color-primary-yellow));
+            padding: 4px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            padding: 40px;
+            background-color: var(--color-bg);
+        }
+
+        /* --- HEADER HALAMAN --- */
+        .page-header {
+            text-align: center;
+            border-bottom: 3px solid #ddd;
+            padding-bottom: 30px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .page-header h1 {
+            font-size: 3em;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .page-header p {
+            font-size: 1.1em;
+            margin-top: 10px;
+            color: #555;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--color-text);
+            transition: color 0.2s ease;
+            position: absolute;
+            top: 10px;
+            left: 0;
+        }
+        .back-link:hover {
+            color: var(--color-primary-blue);
+        }
+
+        /* --- GALERI VIDEO --- */
+        .video-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .video-card {
+            background-color: #fff;
+            border: 3px solid #eee;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .video-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+        }
+        .thumbnail-container {
+            position: relative;
+            display: block;
+        }
+        .video-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            /* [PENTING] Latar belakang sementara saat gambar dimuat */
+            background-color: #eee;
+        }
+
+        .video-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+        
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3.5em;
+            color: rgba(255, 255, 255, 0.9);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .thumbnail-container:hover .play-icon {
+            opacity: 1;
+        }
+
+        .video-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-info h3 {
+            font-size: 1.5em;
+            margin: 0 0 10px 0;
+        }
+
+        .video-info p {
+            font-size: 1em;
+            line-height: 1.6;
+            margin: 0 0 20px 0;
+            flex-grow: 1;
+            color: #444;
+        }
+        
+        .watch-button {
+            display: inline-block;
+            text-align: center;
+            padding: 10px 20px;
+            border: 3px solid var(--color-text);
+            font-weight: 700;
+            font-size: 1em;
+            text-decoration: none;
+            color: var(--color-text);
+            transition: all 0.2s ease;
+            align-self: flex-start; /* Tombol tidak meregang penuh */
+        }
+        
+        .watch-button:hover {
+            background-color: var(--color-text);
+            color: var(--color-bg);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            body { padding: 20px; }
+            .container { padding: 25px; }
+            .back-link { position: static; margin-bottom: 20px; justify-content: center; }
+            .page-header h1 { font-size: 2.2em; }
+        }
+        .site-footer {
+    padding-top: 40px;
+    margin-top: 40px;
+    border-top: 4px solid var(--color-text);
+    display: flex;
+    justify-content: center; /* Mendorong logo ke kanan */
+
+}
+
+.footer-logo {
+    width: 50px; /* Ukuran logo bisa dibuat lebih kecil di sini */
+    height: auto;
+}
+    </style>
+</head>
+<body>
+    
+    <div class="gradient-wrapper">
+        <main class="container">
+
+            <header class="page-header">
+                <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
+                <h1>Karya Video</h1>
+                <p>Kumpulan proyek visual yang pernah saya kerjakan.</p>
+            </header>
+
+            <section class="video-gallery">
+
+                
+
+                <!-- CONTOH KARTU VIDEO 3 -->
+                <article class="video-card">
+                    <a href="https://youtu.be/5aWfy-8EXRY?si=VXwLDRHey2RJRze7" target="_blank" class="thumbnail-container">
+                        <img src="" alt="Thumbnail Video">
+                        <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                    </a>
+                    <div class="video-info">
+                        <h3></h3> <!-- Judul akan diisi oleh JavaScript -->
+                        <p>Video edukasi yang membahas sejarah dan teknologi di balik komputer generasi kedua.</p>
+                        <a href="https://youtu.be/5aWfy-8EXRY?si=VXwLDRHey2RJRze7" target="_blank" class="watch-button">
+                            Tonton di YouTube
+                        </a>
+                    </div>
+                </article>
+                <article class="video-card">
+                    <a href="https://youtu.be/kAj4HTN6Dug?si=wTQeRu1gudVtgUxQ" target="_blank" class="thumbnail-container">
+                        <img src="" alt="Thumbnail Video">
+                        <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                    </a>
+                    <div class="video-info">
+                        <h3></h3> <!-- Judul akan diisi oleh JavaScript -->
+                        <p>Video penjelasan yang mengupas tuntas model bisnis e-commerce (B2B, B2C, C2C, C2B).</p>
+                        <a href="https://youtu.be/kAj4HTN6Dug?si=wTQeRu1gudVtgUxQ" target="_blank" class="watch-button">
+                            Tonton di YouTube
+                        </a>
+                    </div>
+                </article>
+                <article class="video-card">
+                    <a href="https://youtu.be/dL-aE9iplmU?si=8Co1AwFYdcDjfJqc" target="_blank" class="thumbnail-container">
+                        <img src="" alt="Thumbnail Video">
+                        <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                    </a>
+                    <div class="video-info">
+                        <h3></h3> <!-- Judul akan diisi oleh JavaScript -->
+                        <p>Mengulas bagaimana adopsi teknologi pada Sistem Informasi Akuntansi mentransformasi bisnis modern.</p>
+                        <a href="https://youtu.be/dL-aE9iplmU?si=8Co1AwFYdcDjfJqc" target="_blank" class="watch-button">
+                            Tonton di YouTube
+                        </a>
+                    </div>
+                </article>
+
+                <!-- CONTOH KARTU VIDEO 3 -->
+                <article class="video-card">
+                    <a href="https://youtu.be/wM7NZPF2oAk?si=ueKXrn1JywEV8GH5" target="_blank" class="thumbnail-container">
+                        <img src="" alt="Thumbnail Video">
+                        <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                    </a>
+                    <div class="video-info">
+                        <h3></h3> <!-- Judul akan diisi oleh JavaScript -->
+                        <p>Recap kegiatan bisnis susu segar yang dimulai hanya dengan sebuah sepeda.</p>
+                        <a href="https://youtu.be/wM7NZPF2oAk?si=ueKXrn1JywEV8GH5" target="_blank" class="watch-button">
+                            Tonton di YouTube
+                        </a>
+                    </div>
+                </article>
+                <article class="video-card">
+                    <a href="https://youtu.be/Sr-MO8FX9D4?si=5DFzSwkTBCMsPwW5" target="_blank" class="thumbnail-container">
+                        <img src="" alt="Thumbnail Video">
+                        <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                    </a>
+                    <div class="video-info">
+                        <h3></h3> <!-- Judul akan diisi oleh JavaScript -->
+                        <p>Sebuah aransemen ulang instrumental dari lagu K-HipHop populer, 'Meteor' oleh Changmo.</p>
+                        <a href="https://youtu.be/Sr-MO8FX9D4?si=5DFzSwkTBCMsPwW5" target="_blank" class="watch-button">
+                            Tonton di YouTube
+                        </a>
+                    </div>
+                </article>
+                <article class="video-card">
+                    <a href="https://youtu.be/5TH1MNS3hJE?si=WF8Av_J5wRfd_fnf" target="_blank" class="thumbnail-container">
+                        <img src="" alt="Thumbnail Video">
+                        <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                    </a>
+                    <div class="video-info">
+                        <h3></h3> <!-- Judul akan diisi oleh JavaScript -->
+                        <p>Mengintip proses kreatif dan teknis di balik layar pembuatan film pendek 'The Lonely Soul'.</p>
+                        <a href="https://youtu.be/5TH1MNS3hJE?si=WF8Av_J5wRfd_fnf" target="_blank" class="watch-button">
+                            Tonton di YouTube
+                        </a>
+                    </div>
+                </article>
+                <article class="video-card">
+                    <a href="https://youtu.be/q_0O0lq3dWQ?si=-TLMek-fXcaOfWKh" target="_blank" class="thumbnail-container">
+                        <img src="" alt="Thumbnail Video">
+                        <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                    </a>
+                    <div class="video-info">
+                        <h3></h3> <!-- Judul akan diisi oleh JavaScript -->
+                        <p>Episode WartaProject yang mengupas fenomena viralnya game cacing melalui format wawancara.</p>
+                        <a href="https://youtu.be/q_0O0lq3dWQ?si=-TLMek-fXcaOfWKh" target="_blank" class="watch-button">
+                            Tonton di YouTube
+                        </a>
+                    </div>
+                </article>
+                <article class="video-card">
+                    <a href="https://youtu.be/axGEwlKJ1IE?si=v9EtlyOMxiRYJm5s" target="_blank" class="thumbnail-container">
+                        <img src="" alt="Thumbnail Video">
+                        <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                    </a>
+                    <div class="video-info">
+                        <h3></h3> <!-- Judul akan diisi oleh JavaScript -->
+                        <p>Sebuah film pendek naratif yang mengisahkan bagaimana sebuah candaan menjadi awal dari cinta.</p>
+                        <a href="https://youtu.be/axGEwlKJ1IE?si=v9EtlyOMxiRYJm5s" target="_blank" class="watch-button">
+                            Tonton di YouTube
+                        </a>
+                    </div>
+                </article>
+                <article class="video-card">
+                    <a href="https://youtu.be/Yco7jczxj_Q?si=8gvBmvPNo748LuMa" target="_blank" class="thumbnail-container">
+                        <img src="" alt="Thumbnail Video">
+                        <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                    </a>
+                    <div class="video-info">
+                        <h3></h3> <!-- Judul akan diisi oleh JavaScript -->
+                        <p>Aransemen ulang dan cover lagu nostalgia dari serial legendaris Doraemon versi Indonesia.</p>
+                        <a href="https://youtu.be/Yco7jczxj_Q?si=8gvBmvPNo748LuMa" target="_blank" class="watch-button">
+                            Tonton di YouTube
+                        </a>
+                    </div>
+                </article>
+                
+
+                <!-- Tambahkan lebih banyak kartu video di sini -->
+
+            </section>
+ <footer class="site-footer">
+            <img src="sasas.png" alt="Logo Sang Kala Aji" class="footer-logo">
+        </footer>
+        </main>
+    </div>
+ <!-- [BARU] SKRIP JAVASCRIPT UNTUK THUMBNAIL OTOMATIS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoCards = document.querySelectorAll('.video-card');
+
+            videoCards.forEach(card => {
+                const videoLinkElement = card.querySelector('.thumbnail-container');
+                if (!videoLinkElement) return;
+
+                const videoLink = videoLinkElement.href;
+                const thumbnailImage = card.querySelector('img');
+                const videoTitleElement = card.querySelector('.video-info h3');
+                
+                let videoId = '';
+                const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+                const match = videoLink.match(regex);
+                if (match) {
+                    videoId = match[1];
+                }
+
+                if (videoId) {
+                    // --- Logika untuk Thumbnail (Tetap sama) ---
+                    const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+                    thumbnailImage.src = thumbnailUrl;
+                    thumbnailImage.onerror = function() {
+                        this.src = 'https://placehold.co/600x400/eee/ccc?text=Thumbnail+Error';
+                        this.alt = 'Gagal memuat thumbnail';
+                    };
+                    thumbnailImage.alt = 'Thumbnail untuk video ' + videoId;
+
+                    // --- [BARU] Logika untuk mengambil Judul Video ---
+                    if (videoTitleElement) {
+                        videoTitleElement.textContent = 'Memuat judul...';
+                        
+                        // URL untuk mengambil data oEmbed dari YouTube melalui proxy untuk menghindari masalah CORS
+                        const oEmbedUrl = `https://www.youtube.com/oembed?url=http://www.youtube.com/watch?v=${videoId}&format=json`;
+                        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(oEmbedUrl)}`;
+
+                        fetch(proxyUrl)
+                            .then(response => {
+                                if (response.ok) return response.json();
+                                throw new Error('Network response was not ok.');
+                            })
+                            .then(data => {
+                                // Data dari YouTube ada di dalam properti 'contents'
+                                const youtubeData = JSON.parse(data.contents);
+                                if (youtubeData.title) {
+                                    videoTitleElement.textContent = youtubeData.title;
+                                } else {
+                                    videoTitleElement.textContent = 'Judul tidak tersedia';
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Gagal mengambil judul video:', error);
+                                videoTitleElement.textContent = 'Gagal memuat judul';
+                            });
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
