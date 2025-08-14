@@ -202,6 +202,35 @@
             body { padding: 20px; }
             .back-link { position: static; margin-bottom: 20px; justify-content: center; }
         }
+         @media (max-width: 600px) {
+            .portfolio-gallery {
+                /* Mengubah minmax agar kartu bisa lebih ramping */
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            .card-info {
+                padding: 20px;
+            }
+            .card-info h3 {
+                font-size: 1.3em;
+            }
+        }
+
+        /* [BARU] Untuk HP sangat kecil seperti iPhone SE (di bawah 420px) */
+        @media (max-width: 420px) {
+            body {
+                padding: 10px; /* Padding sangat kecil agar konten tidak terpotong */
+            }
+            .container {
+                padding: 15px;
+            }
+            .page-header h1 {
+                font-size: 2em; /* Judul lebih kecil lagi */
+            }
+            .filter-btn {
+                padding: 6px 15px; /* Tombol filter lebih kecil */
+                font-size: 0.9em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -212,7 +241,7 @@
             <header class="page-header">
                 <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
                 <h1>Galeri Karya</h1>
-                <p>Kumpulan proyek visual yang pernah saya kerjakan.</p>
+                <p>Kumpulan proyek visual yang pernah saya buat.</p>
             </header>
 
             <div class="filter-menu">
