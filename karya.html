@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karya - Sang Kala Aji</title>
+    <title>Karya | Sang Kala Aji</title>
     <link rel="icon" href="sasas.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- PALET & FONT --- */
+        /* --- TEMA WARNA & STYLE DASAR --- */
         :root {
             --color-bg: #f5f5f5;
             --color-text: #1c1c1c;
@@ -17,448 +17,197 @@
             --color-primary-red: #d90429;
             --color-primary-blue: #005f73;
             --font-main: 'Jost', sans-serif;
+            --border-thick: 4px solid #1c1c1c;
         }
 
-        /* --- GAYA DASAR --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
         body {
             font-family: var(--font-main);
             color: var(--color-text);
             background-color: var(--color-bg);
-            margin: 0;
             padding: 40px;
+            line-height: 1.5;
         }
         
-        /* --- WRAPPER & CONTAINER --- */
+        /* --- WRAPPER --- */
         .gradient-wrapper {
             background: linear-gradient(135deg, var(--color-primary-blue), var(--color-primary-red), var(--color-primary-yellow));
             padding: 4px;
-            width: 100%;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
         }
         .container {
-            padding: 40px;
+            padding: 60px 40px;
             background-color: var(--color-bg);
         }
 
-        /* --- HEADER HALAMAN --- */
+        /* --- HEADER --- */
         .page-header {
-            text-align: center;
-            border-bottom: 3px solid #ddd;
+            margin-bottom: 50px;
+            border-bottom: var(--border-thick);
             padding-bottom: 30px;
-            margin-bottom: 40px;
-            position: relative;
-        }
-        .page-header h1 {
-            font-size: 3em;
-            text-transform: uppercase;
-        }
-        .page-header p {
-            font-size: 1.1em;
-            margin-top: 10px;
-            color: #555;
         }
         .back-link {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             text-decoration: none;
-            font-weight: 500;
-            color: var(--color-text);
-            position: absolute;
-            top: 10px;
-            left: 0;
-        }
-
-        /* --- FILTER KATEGORI --- */
-        .filter-menu {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-bottom: 50px;
-        }
-        .filter-btn {
-            background-color: #fff;
-            border: 3px solid #eee;
-            padding: 8px 20px;
-            font-family: var(--font-main);
-            font-size: 1em;
             font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            color: var(--color-text);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            transition: 0.2s;
         }
-        .filter-btn:hover {
-            border-color: var(--color-text);
-        }
-        .filter-btn.active {
-            background-color: var(--color-text);
-            color: #fff;
-            border-color: var(--color-text);
+        .back-link:hover { transform: translateX(-5px); }
+        
+        .page-header h1 {
+            font-size: 3.5em;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 10px;
         }
 
-        /* --- GALERI KARYA --- */
-        .portfolio-gallery {
+        /* --- GRID KARYA --- */
+        .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
         .portfolio-card {
-            background-color: #fff;
-            border: 3px solid #eee;
-            border-radius: 4px;
+            background: white;
+            border: var(--border-thick);
             display: flex;
             flex-direction: column;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.4s ease;
-        }
-        .portfolio-card.hide {
-            display: none;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            color: inherit;
         }
         .portfolio-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+            transform: translate(-5px, -5px);
+            box-shadow: 8px 8px 0px var(--color-text);
         }
-        
+
         .thumbnail-container {
             position: relative;
-            display: block;
+            overflow: hidden;
+            border-bottom: var(--border-thick);
+            aspect-ratio: 16/9;
+            background-color: #ddd;
         }
         .portfolio-card img {
             width: 100%;
-            height: 200px;
+            height: 100%;
             object-fit: cover;
-            display: block;
-            border-top-left-radius: 4px;
-            border-top-right-radius: 4px;
-            background-color: #eee;
-        }
-        .overlay-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 3.5em;
-            color: rgba(255, 255, 255, 0.9);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        }
-        .thumbnail-container:hover .overlay-icon {
-            opacity: 1;
         }
 
-        .card-info {
+        .card-content {
             padding: 25px;
             flex-grow: 1;
-            display: flex;
-            flex-direction: column;
         }
-        .card-info h3 {
-            font-size: 1.5em;
-            margin: 0 0 10px 0;
-            min-height: 1.2em;
-        }
-        .card-info p {
-            font-size: 1em;
-            line-height: 1.6;
-            margin: 0 0 20px 0;
-            flex-grow: 1;
-            color: #444;
-        }
-        .action-button {
-            display: inline-block;
-            text-align: center;
-            padding: 10px 20px;
-            border: 3px solid var(--color-text);
+        .category-tag {
+            font-size: 0.75em;
             font-weight: 700;
-            text-decoration: none;
-            color: var(--color-text);
-            transition: all 0.2s ease;
-            align-self: flex-start;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: inline-block;
+            padding: 2px 8px;
+            border: 2px solid var(--color-text);
         }
-        .action-button:hover {
-            background-color: var(--color-text);
-            color: var(--color-bg);
+        .card-content h3 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
         }
-        
+        .card-content p {
+            font-size: 1em;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .action-link {
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em;
+        }
+
+        /* WARNA KHUSUS KARTU */
+        .card-web .category-tag { background-color: var(--color-primary-blue); color: white; }
+        .card-design .category-tag { background-color: var(--color-primary-yellow); }
+        .card-video .category-tag { background-color: var(--color-primary-red); color: white; }
+
         /* --- FOOTER --- */
         .site-footer {
-            padding-top: 40px;
-            margin-top: 40px;
-            border-top: 4px solid var(--color-text);
-            display: flex;
-            justify-content: center;
+            margin-top: 60px;
+            text-align: center;
         }
-        .footer-logo {
-            width: 50px;
-            height: auto;
-        }
+        .footer-logo { width: 50px; }
 
-        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             body { padding: 20px; }
-            .back-link { position: static; margin-bottom: 20px; justify-content: center; }
-        }
-         @media (max-width: 600px) {
-            .portfolio-gallery {
-                /* Mengubah minmax agar kartu bisa lebih ramping */
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            }
-            .card-info {
-                padding: 20px;
-            }
-            .card-info h3 {
-                font-size: 1.3em;
-            }
-        }
-
-        /* [BARU] Untuk HP sangat kecil seperti iPhone SE (di bawah 420px) */
-        @media (max-width: 420px) {
-            body {
-                padding: 10px; /* Padding sangat kecil agar konten tidak terpotong */
-            }
-            .container {
-                padding: 15px;
-            }
-            .page-header h1 {
-                font-size: 2em; /* Judul lebih kecil lagi */
-            }
-            .filter-btn {
-                padding: 6px 15px; /* Tombol filter lebih kecil */
-                font-size: 0.9em;
-            }
+            .page-header h1 { font-size: 2.5em; }
+            .container { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
-    
+
     <div class="gradient-wrapper">
         <main class="container">
-
             <header class="page-header">
                 <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
-                <h1>Galeri Karya</h1>
-                <p>Kumpulan proyek visual yang pernah saya buat.</p>
+                <h1>Karya Pilihan</h1>
+                <p>Kompilasi proyek terbaik dalam satu tampilan sederhana.</p>
             </header>
 
-            <div class="filter-menu">
-                <button class="filter-btn active" data-filter="semua">Semua</button>
-                <button class="filter-btn" data-filter="video">Video</button>
-                <button class="filter-btn" data-filter="desain">Desain & Fotografi</button>
-                <button class="filter-btn" data-filter="website">Website</button>
-            </div>
-
-            <section class="portfolio-gallery">
-
-                <!-- KATEGORI: VIDEO -->
-                <article class="portfolio-card" data-category="video">
-                    <a href="https://youtu.be/5aWfy-8EXRY?si=VXwLDRHey2RJRze7" target="_blank" class="thumbnail-container">
-                        <img src="" alt="Thumbnail Video">
-                        <div class="overlay-icon"><i class="fa-solid fa-play"></i></div>
-                    </a>
-                    <div class="card-info">
-                        <h3></h3>
-                        <p>Video edukasi yang membahas sejarah dan teknologi di balik komputer generasi kedua.</p>
-                        <a href="https://youtu.be/5aWfy-8EXRY?si=VXwLDRHey2RJRze7" target="_blank" class="action-button">Tonton Video</a>
-                    </div>
-                </article>
-                <article class="portfolio-card" data-category="video">
-                    <a href="https://youtu.be/kAj4HTN6Dug?si=wTQeRu1gudVtgUxQ" target="_blank" class="thumbnail-container">
-                        <img src="" alt="Thumbnail Video">
-                        <div class="overlay-icon"><i class="fa-solid fa-play"></i></div>
-                    </a>
-                    <div class="card-info">
-                        <h3></h3>
-                        <p>Video penjelasan yang mengupas tuntas model bisnis e-commerce (B2B, B2C, C2C, C2B).</p>
-                        <a href="https://youtu.be/kAj4HTN6Dug?si=wTQeRu1gudVtgUxQ" target="_blank" class="action-button">Tonton Video</a>
-                    </div>
-                </article>
-                <article class="portfolio-card" data-category="video">
-                    <a href="https://youtu.be/dL-aE9iplmU?si=8Co1AwFYdcDjfJqc" target="_blank" class="thumbnail-container">
-                        <img src="" alt="Thumbnail Video">
-                        <div class="overlay-icon"><i class="fa-solid fa-play"></i></div>
-                    </a>
-                    <div class="card-info">
-                        <h3></h3>
-                        <p>Mengulas bagaimana adopsi teknologi pada Sistem Informasi Akuntansi mentransformasi bisnis modern.</p>
-                        <a href="https://youtu.be/dL-aE9iplmU?si=8Co1AwFYdcDjfJqc" target="_blank" class="action-button">Tonton Video</a>
-                    </div>
-                </article>
-                <article class="portfolio-card" data-category="website">
-                    <a href="pangkalankomputer.id" target="_blank" class="thumbnail-container">
-                        <img src="home.png" alt="Gambar Website">
-                        <div class="overlay-icon"><i class="fa-solid fa-globe"></i></div>
-                    </a>
-                    <div class="card-info">
-                        <h3>Website Company Profile</h3>
-                        <p>Pengembangan website company profile untuk klien, lengkap dengan sistem live tracker service.</p>
-                        <a href="pangkalankomputer.id" target="_blank" class="action-button">Kunjungi Situs</a>
-                    </div>
-                </article>
+            <section class="portfolio-grid">
                 
-                <!-- KATEGORI: FOTOGRAFI -->
-                <article class="portfolio-card" data-category="desain">
-                    <a href="https://drive.google.com/file/d/1Leh7B8bX-mJLbPi3HnWSMOWMOox0RQUb/view?usp=sharing"" target="_blank" class="thumbnail-container">
-                        <img src="hoasd (1).jpg" alt="Gambar Fotografi">
-                        <div class="overlay-icon"><i class="fa-solid fa-camera"></i></div>
-                    </a>
-                    <div class="card-info">
-                        <h3>Gallery Desain & Fotografi</h3>
-                        <p>Seri desain grafis dan fotografi yang menangkap momen-momen unik.</p>
-                        <a href="https://drive.google.com/file/d/1Leh7B8bX-mJLbPi3HnWSMOWMOox0RQUb/view?usp=sharing" target="_blank" class="action-button">Lihat Galeri</a>
+                <a href="https://pangkalankomputer.id" target="_blank" class="portfolio-card card-web">
+                    <div class="thumbnail-container">
+                        <img src="home.png" alt="Pangkalan Komputer Website">
                     </div>
-                </article>
-                <article class="portfolio-card" data-category="video">
-                    <a href="https://youtu.be/wM7NZPF2oAk?si=ueKXrn1JywEV8GH5" target="_blank" class="thumbnail-container">
-                        <img src="" alt="Thumbnail Video">
-                        <div class="overlay-icon"><i class="fa-solid fa-play"></i></div>
-                    </a>
-                    <div class="card-info">
-                        <h3></h3>
-                        <p>Recap kegiatan bisnis susu segar yang dimulai hanya dengan sebuah sepeda.</p>
-                        <a href="https://youtu.be/wM7NZPF2oAk?si=ueKXrn1JywEV8GH5" target="_blank" class="action-button">Tonton Video</a>
+                    <div class="card-content">
+                        <span class="category-tag">Web Development</span>
+                        <h3>Pangkalan Komputer ID</h3>
+                        <p>Website company profile profesional dengan fitur live service tracker.</p>
+                        <span class="action-link">Kunjungi Situs <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
                     </div>
-                </article>
-                <article class="portfolio-card" data-category="video">
-                    <a href="https://youtu.be/Sr-MO8FX9D4?si=5DFzSwkTBCMsPwW5" target="_blank" class="thumbnail-container">
-                        <img src="" alt="Thumbnail Video">
-                        <div class="overlay-icon"><i class="fa-solid fa-play"></i></div>
-                    </a>
-                    <div class="card-info">
-                        <h3></h3>
-                        <p>Sebuah aransemen ulang instrumental dari lagu K-HipHop populer, 'Meteor' oleh Changmo.</p>
-                        <a href="https://youtu.be/Sr-MO8FX9D4?si=5DFzSwkTBCMsPwW5" target="_blank" class="action-button">Tonton Video</a>
-                    </div>
-                </article>
-                <article class="portfolio-card" data-category="video">
-                    <a href="https://youtu.be/5TH1MNS3hJE?si=WF8Av_J5wRfd_fnf" target="_blank" class="thumbnail-container">
-                        <img src="" alt="Thumbnail Video">
-                        <div class="overlay-icon"><i class="fa-solid fa-play"></i></div>
-                    </a>
-                    <div class="card-info">
-                        <h3></h3>
-                        <p>Mengintip proses kreatif dan teknis di balik layar pembuatan film pendek 'The Lonely Soul'.</p>
-                        <a href="https://youtu.be/5TH1MNS3hJE?si=WF8Av_J5wRfd_fnf" target="_blank" class="action-button">Tonton Video</a>
-                    </div>
-                </article>
-                <article class="portfolio-card" data-category="video">
-                    <a href="https://youtu.be/q_0O0lq3dWQ?si=-TLMek-fXcaOfWKh" target="_blank" class="thumbnail-container">
-                        <img src="" alt="Thumbnail Video">
-                        <div class="overlay-icon"><i class="fa-solid fa-play"></i></div>
-                    </a>
-                    <div class="card-info">
-                        <h3></h3>
-                        <p>Episode WartaProject yang mengupas fenomena viralnya game cacing melalui format wawancara.</p>
-                        <a href="https://youtu.be/q_0O0lq3dWQ?si=-TLMek-fXcaOfWKh" target="_blank" class="action-button">Tonton Video</a>
-                    </div>
-                </article>
-                <article class="portfolio-card" data-category="video">
-                    <a href="https://youtu.be/axGEwlKJ1IE?si=v9EtlyOMxiRYJm5s" target="_blank" class="thumbnail-container">
-                        <img src="" alt="Thumbnail Video">
-                        <div class="overlay-icon"><i class="fa-solid fa-play"></i></div>
-                    </a>
-                    <div class="card-info">
-                        <h3></h3>
-                        <p>Sebuah film pendek naratif yang mengisahkan bagaimana sebuah candaan menjadi awal dari cinta.</p>
-                        <a href="https://youtu.be/axGEwlKJ1IE?si=v9EtlyOMxiRYJm5s" target="_blank" class="action-button">Tonton Video</a>
-                    </div>
-                </article>
-                <article class="portfolio-card" data-category="video">
-                    <a href="https://youtu.be/Yco7jczxj_Q?si=8gvBmvPNo748LuMa" target="_blank" class="thumbnail-container">
-                        <img src="" alt="Thumbnail Video">
-                        <div class="overlay-icon"><i class="fa-solid fa-play"></i></div>
-                    </a>
-                    <div class="card-info">
-                        <h3></h3>
-                        <p>Aransemen ulang dan cover lagu nostalgia dari serial legendaris Doraemon versi Indonesia.</p>
-                        <a href="https://youtu.be/Yco7jczxj_Q?si=8gvBmvPNo748LuMa" target="_blank" class="action-button">Tonton Video</a>
-                    </div>
-                </article>
+                </a>
 
-                <!-- KATEGORI: WEBSITE -->
-                
+                <a href="https://youtube.com/playlist?list=PL4qMmrzI0SOZj1q8z0WOoVVHJxLyJYrUA" target="_blank" class="portfolio-card card-video">
+                    <div class="thumbnail-container">
+                        <img src="https://img.youtube.com/vi/kAj4HTN6Dug/maxresdefault.jpg" alt="Video Playlist Cover">
+                    </div>
+                    <div class="card-content">
+                        <span class="category-tag">Video Production</span>
+                        <h3>MaPorto Playlist</h3>
+                        <p>Kumpulan karya video edukasi, recap bisnis, dan konten kreatif lainnya dalam satu playlist.</p>
+                        <span class="action-link">Buka Playlist <i class="fa-brands fa-youtube"></i></span>
+                    </div>
+                </a>
+
+                <a href="https://drive.google.com/file/d/1Leh7B8bX-mJLbPi3HnWSMOWMOox0RQUb/view" target="_blank" class="portfolio-card card-design">
+                    <div class="thumbnail-container">
+                        <img src="hoasd (1).jpg" alt="Design Portfolio">
+                    </div>
+                    <div class="card-content">
+                        <span class="category-tag">Graphic Design</span>
+                        <h3>Branding & Design</h3>
+                        <p>Galeri desain grafis dan fotografi untuk branding dan media sosial.</p>
+                        <span class="action-link">Lihat Galeri <i class="fa-solid fa-image"></i></span>
+                    </div>
+                </a>
 
             </section>
-            
+
             <footer class="site-footer">
-                <img src="sasas.png" alt="Logo Sang Kala Aji" class="footer-logo">
+                <img src="sasas.png" alt="Logo" class="footer-logo">
             </footer>
         </main>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // --- BAGIAN FILTER ---
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const portfolioCards = document.querySelectorAll('.portfolio-card');
-
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    const filter = button.getAttribute('data-filter');
-
-                    portfolioCards.forEach(card => {
-                        const category = card.getAttribute('data-category');
-                        if (filter === 'semua' || filter === category) {
-                            card.classList.remove('hide');
-                        } else {
-                            card.classList.add('hide');
-                        }
-                    });
-                });
-            });
-
-            // --- BAGIAN OTOMATISASI KARTU VIDEO ---
-            portfolioCards.forEach(card => {
-                if (card.getAttribute('data-category') !== 'video') return;
-
-                const videoLinkElement = card.querySelector('.thumbnail-container');
-                if (!videoLinkElement) return;
-
-                const videoLink = videoLinkElement.href;
-                const thumbnailImage = card.querySelector('img');
-                const videoTitleElement = card.querySelector('.card-info h3');
-                
-                let videoId = '';
-                const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/|youtube.com\/shorts\/)([a-zA-Z0-9_-]{11})/;
-                const match = videoLink.match(regex);
-                if (match) videoId = match[1];
-
-                if (videoId) {
-                    const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-                    thumbnailImage.src = thumbnailUrl;
-                    thumbnailImage.onerror = function() {
-                        this.src = 'https://placehold.co/600x400/eee/ccc?text=Error';
-                    };
-                    thumbnailImage.alt = 'Thumbnail untuk video';
-
-                    if (videoTitleElement) {
-                        videoTitleElement.textContent = 'Memuat judul...';
-                        const oEmbedUrl = `https://www.youtube.com/oembed?url=http://www.youtube.com/watch?v=${videoId}&format=json`;
-                        const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(oEmbedUrl)}`;
-                        
-                        fetch(proxyUrl)
-                            .then(response => response.json())
-                            .then(data => {
-                                const youtubeData = JSON.parse(data.contents);
-                                if (youtubeData && youtubeData.title) {
-                                    videoTitleElement.textContent = youtubeData.title;
-                                } else {
-                                    videoTitleElement.textContent = 'Judul tidak tersedia';
-                                }
-                            })
-                            .catch(() => {
-                                videoTitleElement.textContent = 'Gagal memuat judul';
-                            });
-                    }
-                }
-            });
-        });
-    </script>
 
 </body>
 </html>
