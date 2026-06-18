@@ -102,7 +102,7 @@
                         "body-md": ["16px", { "lineHeight": "28px", "fontWeight": "400" }],
                         "display-lg": ["72px", { "lineHeight": "84px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
                         "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
-                        "body-lg": ["18px", { "lineHeight": "32px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "32px", "fontWeight": "400" }],
                         "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }]
                     }
                 }
@@ -158,9 +158,17 @@
         }
 
         @keyframes bgShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .animated-highlight {
@@ -180,64 +188,62 @@
     <!-- Vanta Background -->
     <div id="vanta-bg" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
     <!-- TopNavBar -->
-    <nav class="fixed top-0 w-full z-50 transition-all duration-500 ease-in-out py-4 md:py-6" id="navbar">
+    <nav class="fixed top-0 w-full z-50 transition-all duration-500 ease-in-out py-6" id="navbar">
         <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
             <a class="flex items-center gap-2 hover:opacity-70 transition-opacity duration-300" href="#">
-                <img alt="KALA Logo" class="h-6 md:h-8 w-auto invert" src="sasas.png" />
+                <img alt="KALA Logo" class="h-8 w-auto invert" src="sasas.png" />
             </a>
             <div id="nav-menu"
-                class="hidden absolute top-full left-0 w-full bg-[#1a1a1a] flex-col items-center gap-8 py-8 border-b border-white/10 md:static md:w-auto md:bg-transparent md:flex md:flex-row md:border-none md:py-0 font-label-caps text-label-caps">
+                class="absolute top-full left-0 w-full bg-[#1a1a1a]/95 backdrop-blur-md flex flex-col items-center gap-8 border-b border-white/10 origin-top transition-all duration-300 scale-y-0 opacity-0 pointer-events-none py-0 md:static md:w-auto md:bg-transparent md:flex md:flex-row md:border-none md:scale-y-100 md:opacity-100 md:pointer-events-auto md:py-0 font-label-caps text-label-caps">
                 <a class="text-on-primary hover:text-outline-variant transition-colors link-hover-effect"
                     href="#about">About</a>
 
                 <a class="text-on-primary hover:text-outline-variant transition-colors link-hover-effect"
                     href="#connect">Contact</a>
-
             </div>
 
             <!-- Mobile Menu Toggle -->
             <button id="mobile-menu-toggle" class="md:hidden text-on-primary p-2">
-                <span class="material-symbols-outlined" style="font-size: 24px;">menu</span>
+                <span id="menu-icon" class="material-symbols-outlined transition-transform duration-300" style="font-size: 24px;">menu</span>
             </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative min-h-screen flex items-center justify-center pt-20 md:pt-36 pb-12 md:pb-section-gap overflow-hidden"
+    <header
+        class="relative min-h-screen flex items-center justify-center pt-20 md:pt-36 pb-8 md:pb-section-gap overflow-hidden"
         id="about">
         <div
             class="relative z-10 w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
             <div
-                class="md:col-span-6 md:col-start-1 flex flex-col items-center md:items-start text-center md:text-left gap-3 md:gap-8 order-2 md:order-1">
-                <div class="flex flex-col gap-1 md:gap-2">
-                    <span class="font-label-caps text-[10px] md:text-label-caps tracking-[0.2em] uppercase animated-highlight w-max mx-auto md:mx-0">Creative Creator &amp; Developer</span>
+                class="md:col-span-6 md:col-start-1 flex flex-col items-center md:items-start text-center md:text-left gap-4 md:gap-8 order-2 md:order-1">
+                <div class="flex flex-col gap-4">
+                    <span
+                        class="font-label-caps text-label-caps tracking-[0.2em] uppercase animated-highlight w-max mx-auto md:mx-0">Sang Kala Aji</span>
                     <h1
-                        class="text-3xl md:font-display-lg md:text-[96px] md:leading-[100px] text-on-primary tracking-tighter font-bold">
-                        Sang Kala Aji
+                        class="font-headline-lg text-[40px] leading-[1.1] md:font-display-lg md:text-[84px] md:leading-[1.1] text-on-primary tracking-tighter cursor-default group">
+                        Hi, I'm <span class="inline-block transition-all duration-300 hover:-skew-x-6 hover:scale-105 hover:text-[#cc3b14] origin-center">Kala</span>.<br/>
+                        <span class="text-outline-variant text-[26px] sm:text-[32px] md:text-[64px] font-medium block mt-1 md:mt-4">
+                            I <span class="inline-block transition-all duration-300 hover:skew-x-6 hover:scale-105 hover:text-[#cc3b14] origin-center">Code</span> Websites &amp;<br class="hidden xl:block"/> 
+                            Create <span class="inline-block transition-all duration-300 hover:-skew-x-6 hover:scale-105 hover:text-[#cc3b14] origin-center">Content</span>.
+                        </span>
                     </h1>
                 </div>
-                <p class="text-sm md:text-body-lg text-outline-variant max-w-2xl leading-relaxed">
-                    Membangun jembatan antara narasi visual yang memikat dan solusi digital yang fungsional. Berfokus
-                    pada pengembangan web yang presisi serta produksi konten kreatif yang berdampak.
-                </p>
-                <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-4">
-                    <a class="px-6 py-3 md:px-10 md:py-4 bg-on-primary text-primary font-label-caps text-xs md:text-label-caps hover:bg-outline-variant transition-colors"
-                        href="karya.html">
-                        View Portfolio
-                    </a>
-                    <a class="px-6 py-3 md:px-10 md:py-4 ghost-button-dark text-on-primary font-label-caps text-xs md:text-label-caps"
+                
+                <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-6 md:mt-8">
+                    <a class="px-10 py-4 ghost-button-dark text-on-primary font-label-caps text-label-caps"
                         href="https://wa.me/6285795603927" target="_blank">
                         Connect
                     </a>
                 </div>
             </div>
             <div
-                class="md:col-span-5 md:col-start-8 flex justify-center mb-4 md:mb-0 md:mt-0 relative order-1 md:order-2">
+                class="md:col-span-5 md:col-start-8 flex justify-center mb-6 md:mb-0 md:mt-0 relative order-1 md:order-2">
                 <div
                     class="absolute inset-0 bg-outline/10 rounded-full md:rounded-t-[200px] md:rounded-b-none blur-3xl transform scale-90">
                 </div>
                 <div
-                    class="relative w-36 h-36 sm:w-48 sm:h-48 md:w-full md:h-auto md:max-w-[420px] md:aspect-[4/5] rounded-full md:rounded-t-[200px] md:rounded-b-none overflow-hidden border border-outline/20 bg-inverse-surface mx-auto">
+                    class="relative w-40 h-40 sm:w-56 sm:h-56 md:w-full md:h-auto md:max-w-[420px] md:aspect-[4/5] rounded-full md:rounded-t-[200px] md:rounded-b-none overflow-hidden border border-outline/20 bg-inverse-surface mx-auto">
                     <img alt="Sang Kala Aji Profile Photo"
                         class="w-full h-full object-cover object-center grayscale hover:grayscale-0 transition-all duration-700"
                         src="AjiS.jpg" />
@@ -250,7 +256,7 @@
 
     <section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto" id="connect">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-            <div class="md:col-span-4 md:col-start-1 mb-12 md:mb-0">
+            <div class="md:col-span-4 md:col-start-1 mb-6 md:mb-0">
                 <h2 class="font-headline-lg text-headline-lg text-on-primary mb-6">Digital Presence</h2>
                 <div class="w-12 h-[1px] bg-outline/30 mb-8"></div>
                 <p class="font-body-md text-body-md text-outline-variant">
@@ -375,17 +381,35 @@
         // Mobile menu toggle
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
         const navMenu = document.getElementById('nav-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        let isMenuOpen = false;
+
+        const toggleMenu = () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                navMenu.classList.remove('scale-y-0', 'opacity-0', 'pointer-events-none', 'py-0');
+                navMenu.classList.add('scale-y-100', 'opacity-100', 'pointer-events-auto', 'py-8');
+                menuIcon.classList.add('rotate-180');
+                setTimeout(() => {
+                    menuIcon.textContent = 'close';
+                }, 150);
+            } else {
+                navMenu.classList.remove('scale-y-100', 'opacity-100', 'pointer-events-auto', 'py-8');
+                navMenu.classList.add('scale-y-0', 'opacity-0', 'pointer-events-none', 'py-0');
+                menuIcon.classList.remove('rotate-180');
+                setTimeout(() => {
+                    menuIcon.textContent = 'menu';
+                }, 150);
+            }
+        };
+
         if (mobileMenuToggle && navMenu) {
-            mobileMenuToggle.addEventListener('click', () => {
-                navMenu.classList.toggle('hidden');
-                navMenu.classList.toggle('flex');
-            });
+            mobileMenuToggle.addEventListener('click', toggleMenu);
 
             // Close menu when clicking a link
             navMenu.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
-                    navMenu.classList.add('hidden');
-                    navMenu.classList.remove('flex');
+                    if (isMenuOpen) toggleMenu();
                 });
             });
         }
