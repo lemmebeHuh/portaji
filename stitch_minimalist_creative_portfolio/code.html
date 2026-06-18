@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sang Kala Aji | Creative Creator &amp; Developer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#000000",
+                        "canvas-gray": "#EEEEEE",
+                        "secondary-fixed": "#b2ebff",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#001f27",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#e5e2e1",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#474746",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-primary-container": "#858383",
+                        "on-surface": "#1b1c1c",
+                        "on-surface-variant": "#444748",
+                        "surface-container-highest": "#e4e2e2",
+                        "inverse-on-surface": "#f2f0f0",
+                        "secondary-container": "#a1e7ff",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "error": "#ba1a1a",
+                        "ink-text": "#1A1A1A",
+                        "inverse-surface": "#303030",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "outline": "#747878",
+                        "on-secondary-container": "#18697e",
+                        "surface-bright": "#fbf9f8",
+                        "surface": "#fbf9f8",
+                        "on-background": "#1b1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c4c7c7",
+                        "primary-container": "#1c1b1b",
+                        "surface-container": "#efeded",
+                        "on-tertiary-container": "#838484",
+                        "surface-container-high": "#eae8e7",
+                        "surface-container-low": "#f5f3f3",
+                        "on-secondary-fixed-variant": "#004e5f",
+                        "secondary-fixed-dim": "#8bd1e8",
+                        "inverse-primary": "#c8c6c5",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "parchment-bg": "#F9F9F9",
+                        "surface-variant": "#e4e2e2",
+                        "background": "#fbf9f8",
+                        "surface-tint": "#5f5e5e",
+                        "tertiary": "#000000",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#e2e2e2",
+                        "secondary": "#13677b",
+                        "deep-teal": "#005F73",
+                        "tertiary-container": "#1a1c1c",
+                        "on-primary-fixed": "#1c1b1b",
+                        "surface-dim": "#dbdad9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "24px",
+                        "margin-desktop": "80px",
+                        "unit": "8px",
+                        "section-gap": "160px",
+                        "gutter": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", { "lineHeight": "42px", "fontWeight": "500" }],
+                        "headline-lg": ["48px", { "lineHeight": "56px", "fontWeight": "600" }],
+                        "label-sm": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["72px", { "lineHeight": "84px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "32px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #1a1a1a; /* Solid obsidian background */
+            color: #f9f9f9;
+        }
+        .nav-scrolled {
+            background-color: rgba(26, 26, 26, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .link-hover-effect {
+            position: relative;
+            display: inline-block;
+        }
+        .link-hover-effect::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #f9f9f9;
+            transition: width 0.3s ease;
+        }
+        .link-hover-effect:hover::after {
+            width: 100%;
+        }
+        .ghost-button-dark {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        .ghost-button-dark:hover {
+            background-color: #f9f9f9;
+            color: #1a1a1a;
+            border-color: #f9f9f9;
+        }
+        .gold-accent {
+            color: #d4af37; /* Muted gold */
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased selection:bg-surface-variant selection:text-ink-text">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 transition-all duration-500 ease-in-out py-6" id="navbar">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+<a class="flex items-center gap-2 hover:opacity-70 transition-opacity duration-300" href="#">
+<img alt="KALA Logo" class="h-8 w-auto invert" src="https://lh3.googleusercontent.com/aida/AP1WRLt-kv9Vt5DWXkakQc6wdf1PoG34eCpxvlaJ9BBmO9sN3EP_axi1VI6YikFMguzSZf-kdEzkXS5UwYRhENF_D4JubpqaSx1lWLecGI4_npRWoQ-6VEcq8xcvhVYgWVFjn0ax6yFIEzaHNlapU3pQ2Zq4ZdxoB0ad8UUmNxIUaMoxIfgEbCNnUaiJbtn39A7hNps8VRhBfyiedYLMdcvmd8fmJrxgxtQJKEDKihloY_WbHcVAryjPLKAO"/>
+</a>
+<div class="hidden md:flex items-center gap-8 font-label-caps text-label-caps">
+<a class="text-on-primary hover:text-outline-variant transition-colors link-hover-effect" href="#about">About</a>
+<a class="text-on-primary hover:text-outline-variant transition-colors link-hover-effect" href="#work">Work</a>
+<a class="text-on-primary hover:text-outline-variant transition-colors link-hover-effect" href="#contact">Contact</a>
+</div>
+<a class="hidden md:inline-block px-8 py-3 bg-on-primary text-primary font-label-caps text-label-caps hover:bg-outline-variant transition-colors" href="#contact">
+                Let's Talk
+            </a>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-on-primary">
+<span class="material-symbols-outlined" style="font-size: 24px;">menu</span>
+</button>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative min-h-screen flex items-center justify-center pt-24 pb-section-gap overflow-hidden">
+<div class="relative z-10 w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+<div class="md:col-span-6 md:col-start-1 flex flex-col gap-8">
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-label-caps tracking-[0.2em] gold-accent uppercase">Creative Creator &amp; Developer</span>
+<h1 class="font-headline-lg text-headline-lg md:font-display-lg md:text-[96px] md:leading-[100px] text-on-primary tracking-tighter">
+                        Sang Kala Aji
+                    </h1>
+</div>
+<p class="font-body-lg text-body-lg text-outline-variant max-w-2xl">
+                    Membangun jembatan antara narasi visual yang memikat dan solusi digital yang fungsional. Berfokus pada pengembangan web yang presisi serta produksi konten kreatif yang berdampak.
+                </p>
+<div class="flex flex-wrap gap-4 mt-4">
+<a class="px-10 py-4 bg-on-primary text-primary font-label-caps text-label-caps hover:bg-outline-variant transition-colors" href="karya.html">
+                        View Portfolio
+                    </a>
+<a class="px-10 py-4 ghost-button-dark text-on-primary font-label-caps text-label-caps" href="#connect">
+                        Connect
+                    </a>
+</div>
+</div>
+<div class="md:col-span-5 md:col-start-8 flex justify-center mt-16 md:mt-0 relative">
+<div class="absolute inset-0 bg-outline/10 rounded-t-[200px] blur-3xl transform scale-90"></div>
+<div class="relative w-full max-w-[420px] aspect-[4/5] rounded-t-[200px] overflow-hidden border border-outline/20 bg-inverse-surface mx-auto">
+<img alt="Sang Kala Aji Profile Photo" class="w-full h-full object-cover object-center grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPa4p5BIKGDlaFu-pgdkxIHPvCr0_DWbdC1OUIEBA5z9aO15CYwMHiruZ0HFZv4Gm8-scsjLVbvgYp8EK2Cw4FoYrRxCgEbBbVfLh1KJSZzR0xWyPOfjrj6JXOiKRryX3M2GNRhxVYmLycNtGwnJFvpsePM3OLx6ArYQHFUKSE3AiGN45sPU6jsPrxW9HyGDR1GO2r6bN4cIgJ8fdTaNOcQURN9AiVy3sG5uwRfJ7EZdFNxygygszoCNJxvZqDXfn7T8Q0tdt4vg"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Connect / Links Section (Asymmetrical Grid) -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto" id="work">
+<div class="mb-12">
+<h2 class="font-headline-lg text-headline-lg text-on-primary mb-6">Selected Works</h2>
+<div class="w-12 h-[1px] bg-outline/30"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Project 1 -->
+<div class="group relative overflow-hidden">
+<div class="aspect-[4/5] overflow-hidden bg-surface-container">
+<img alt="UI Design Project" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 grayscale group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSQJ80Hhe2PeBb2OUuHSYmodGS06SqS83j41iG8V0deRutv7SK3oo22l29FcGw01KJuOAYb25ulN5D_VAVpLxDagH52UOOVaZ216xE8_akOQCo1b6TNPokw5J8yDKOlBtZzOUgvtTF-USfa-ZZjtP7vNEvrjUpA2Y5Q_CpZKirBML9xiagQKBKyFUPBjRs_7fJw4UqyDU-83O7aQpPDGSVNWuia1yYQf5v-qjimJaf3_NT7eGaTZjZE3tlkXpqnp5YIHNMLVx7LQ"/>
+</div>
+<div class="mt-6">
+<span class="font-label-caps text-label-caps gold-accent uppercase tracking-widest">UI/UX Design</span>
+<h3 class="font-headline-md text-headline-md text-on-primary mt-2">Lumina Interface</h3>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="group relative overflow-hidden">
+<div class="aspect-[4/5] overflow-hidden bg-surface-container">
+<img alt="Photography Project" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 grayscale group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE_TBwXL8HxKJG_-1iRsyDbEIaFvvk6vpJPY1eMk5vhGgDLyarO9gUISJCCOijkxX4tvwhLz9R0iyKwg8EsEMLVjJlKzzoKaN3rWobFkTODZW7igBqd87VqpnxzcZM74gel_GfQLnSL5xBDFceCbXqZrsI8DKUseVfpDMAHv51-wjeVG9nudYD4Yb6NFBTiyKwtfYMCjJfsfKQM7alsqDXna5-S3yDcHbOjG0fWM3vf-24va7fSWP-8JCQgOzVHgJB5j9OJ3-b4Q"/>
+</div>
+<div class="mt-6">
+<span class="font-label-caps text-label-caps gold-accent uppercase tracking-widest">Photography</span>
+<h3 class="font-headline-md text-headline-md text-on-primary mt-2">Urban Silence</h3>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="group relative overflow-hidden">
+<div class="aspect-[4/5] overflow-hidden bg-surface-container">
+<img alt="Web Development Project" class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 grayscale group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy5U2CKn5JkQzNpfPzFkl3Vo5-2xwrQHvr3rXIOpz5W8OvDOdhYnGi3o_iB9O12NQAq0Z99qrou_H-oi56B0m8mxL2-QwPf2YQuXbfpPQb70UdiXepi5NmIIn4R4yao709EfSHQhiReYugn798kFyKM4uhXkd_kGDWRIKQE4zbs8irAkb_h0JhayEapZMxhgv-ccpSZVANc8f2OIkhY1vxG879kXjVWUZh_-8jbwKoDYN9nW9dhR6wIhZ0ACtCMtDKRCT7iin__A"/>
+</div>
+<div class="mt-6">
+<span class="font-label-caps text-label-caps gold-accent uppercase tracking-widest">Web Development</span>
+<h3 class="font-headline-md text-headline-md text-on-primary mt-2">Nexus Engine</h3>
+</div>
+</div>
+</div>
+</section><section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto" id="connect">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-4 md:col-start-1 mb-12 md:mb-0">
+<h2 class="font-headline-lg text-headline-lg text-on-primary mb-6">Digital Presence</h2>
+<div class="w-12 h-[1px] bg-outline/30 mb-8"></div>
+<p class="font-body-md text-body-md text-outline-variant">
+                    Terhubung dan berkolaborasi melalui berbagai platform digital. Menjelajahi ruang kreatif dan teknikal.
+                </p>
+</div>
+<div class="md:col-span-7 md:col-start-6">
+<ul class="flex flex-col gap-4 font-label-caps text-label-caps text-on-primary"><li class="border-b border-outline/20"><a class="flex justify-between items-center group py-4" href="https://linkedin.com/in/sangkalaaji" target="_blank"><div class="flex items-center gap-4"><span class="group-hover:gold-accent transition-colors">LinkedIn</span></div><span class="material-symbols-outlined text-outline group-hover:text-on-primary transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1">arrow_outward</span></a></li><li class="border-b border-outline/20"><a class="flex justify-between items-center group py-4" href="https://github.com/lemmebeHuh" target="_blank"><div class="flex items-center gap-4"><span class="group-hover:gold-accent transition-colors">GitHub</span></div><span class="material-symbols-outlined text-outline group-hover:text-on-primary transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1">arrow_outward</span></a></li><li class="border-b border-outline/20"><a class="flex justify-between items-center group py-4" href="https://medium.com/@sangkalaaji" target="_blank"><div class="flex items-center gap-4"><span class="group-hover:gold-accent transition-colors">Medium</span></div><span class="material-symbols-outlined text-outline group-hover:text-on-primary transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1">arrow_outward</span></a></li><li class="border-b border-outline/20"><a class="flex justify-between items-center group py-4" href="https://wa.me/6285795603927" target="_blank"><div class="flex items-center gap-4"><span class="group-hover:gold-accent transition-colors">WhatsApp</span></div><span class="material-symbols-outlined text-outline group-hover:text-on-primary transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1">arrow_outward</span></a></li><li class="border-b border-outline/20"><a class="flex justify-between items-center group py-4" href="https://www.youtube.com/@sangkalaaji" target="_blank"><div class="flex items-center gap-4"><span class="group-hover:gold-accent transition-colors">YouTube</span></div><span class="material-symbols-outlined text-outline group-hover:text-on-primary transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1">arrow_outward</span></a></li><li class="border-b border-outline/20"><a class="flex justify-between items-center group py-4" href="https://www.instagram.com/aji___sk/" target="_blank"><div class="flex items-center gap-4"><span class="group-hover:gold-accent transition-colors">Instagram</span></div><span class="material-symbols-outlined text-outline group-hover:text-on-primary transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1">arrow_outward</span></a></li><li class="border-b border-outline/20"><a class="flex justify-between items-center group py-4" href="https://www.strava.com/athletes/90824258" target="_blank"><div class="flex items-center gap-4"><span class="group-hover:gold-accent transition-colors">Strava</span></div><span class="material-symbols-outlined text-outline group-hover:text-on-primary transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1">arrow_outward</span></a></li></ul>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-section-gap border-t border-outline/10 mt-24">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto gap-gutter">
+<div class="flex flex-col gap-4">
+<span class="font-headline-md text-headline-md text-on-primary font-bold tracking-tighter">
+                    KALA
+                </span>
+<p class="font-body-md text-body-md text-outline-variant">
+                    © 2024 KALA. Built for the elite creative professional.
+                </p>
+</div>
+<div class="flex gap-8 font-label-caps text-label-caps">
+<a class="text-on-primary hover:gold-accent transition-colors underline decoration-1 underline-offset-4" href="https://linkedin.com/in/sangkalaaji">LinkedIn</a>
+<a class="text-on-primary hover:gold-accent transition-colors underline decoration-1 underline-offset-4" href="https://github.com/lemmebeHuh">GitHub</a>
+<a class="text-on-primary hover:gold-accent transition-colors underline decoration-1 underline-offset-4" href="https://www.instagram.com/aji___sk/">Instagram</a>
+</div>
+</div>
+</footer>
+<script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+        });
+    </script>
+</body></html>

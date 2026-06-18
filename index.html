@@ -1,233 +1,416 @@
 <!DOCTYPE html>
-<html lang="id">
+<html class="scroll-smooth" lang="id">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Sang Kala Aji | Professional Portfolio</title>
     <link rel="icon" href="sasas.png">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        /* --- BRANDING & VARIABLES --- */
-        :root {
-            --bg-color: #ffffff;
-            --text-main: #1a1a1a;
-            --text-muted: #555555;
-            --accent-color: #005f73; /* Biru Profesional dari palet lama */
-            --border-light: #eeeeee;
-            --font-main: 'Jost', sans-serif;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* --- BASE STYLES --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: var(--font-main);
-            color: var(--text-main);
-            background-color: var(--bg-color);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            padding: 80px 0;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        /* Text Content */
-        h1 {
-            font-size: clamp(3rem, 8vw, 4.5rem);
-            font-weight: 700;
-            line-height: 1;
-            letter-spacing: -2px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .tagline {
-            display: inline-block;
-            font-size: 1.1rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            color: var(--accent-color);
-            text-transform: uppercase;
-            margin-bottom: 25px;
-        }
-
-        .description {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 580px;
-            margin-bottom: 40px;
-            font-weight: 300;
-        }
-
-        /* Profile Photo */
-        .photo-wrapper {
-            position: relative;
-            justify-self: center;
-        }
-
-        .profile-photo {
-            width: 320px;
-            height: 320px;
-            object-fit: cover;
-            border-radius: 50%;
-            filter: grayscale(20%); /* Kesan lebih artistik/profesional */
-            transition: var(--transition);
-            border: 1px solid var(--border-light);
-            padding: 10px;
-        }
-
-        .photo-wrapper:hover .profile-photo {
-            filter: grayscale(0%);
-            transform: scale(1.02);
-        }
-
-        /* --- BUTTONS & LINKS --- */
-        .link-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 15px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 14px 20px;
-            border: 1px solid var(--border-light);
-            border-radius: 6px;
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            background: #fff;
-        }
-
-        .btn i { font-size: 1.1rem; }
-
-        .btn:hover {
-            border-color: var(--text-main);
-            background: var(--text-main);
-            color: #fff;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-
-        /* Highlighting Portfolio */
-        .btn-primary {
-            background: var(--text-main);
-            color: #fff;
-            border-color: var(--text-main);
-        }
-        
-        .btn-primary:hover {
-            background: var(--accent-color);
-            border-color: var(--accent-color);
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            padding: 60px 0;
-            border-top: 1px solid var(--border-light);
-            text-align: center;
-        }
-
-        .footer-logo {
-            width: 45px;
-            opacity: 0.5;
-            transition: var(--transition);
-        }
-
-        .footer-logo:hover { opacity: 1; }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 992px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 50px;
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#000000",
+                        "canvas-gray": "#EEEEEE",
+                        "secondary-fixed": "#b2ebff",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#001f27",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#e5e2e1",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#474746",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-primary-container": "#858383",
+                        "on-surface": "#1b1c1c",
+                        "on-surface-variant": "#444748",
+                        "surface-container-highest": "#e4e2e2",
+                        "inverse-on-surface": "#f2f0f0",
+                        "secondary-container": "#a1e7ff",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "error": "#ba1a1a",
+                        "ink-text": "#1A1A1A",
+                        "inverse-surface": "#303030",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "outline": "#747878",
+                        "on-secondary-container": "#18697e",
+                        "surface-bright": "#fbf9f8",
+                        "surface": "#fbf9f8",
+                        "on-background": "#1b1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#c4c7c7",
+                        "primary-container": "#1c1b1b",
+                        "surface-container": "#efeded",
+                        "on-tertiary-container": "#838484",
+                        "surface-container-high": "#eae8e7",
+                        "surface-container-low": "#f5f3f3",
+                        "on-secondary-fixed-variant": "#004e5f",
+                        "secondary-fixed-dim": "#8bd1e8",
+                        "inverse-primary": "#c8c6c5",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "parchment-bg": "#F9F9F9",
+                        "surface-variant": "#e4e2e2",
+                        "background": "#fbf9f8",
+                        "surface-tint": "#5f5e5e",
+                        "tertiary": "#000000",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#e2e2e2",
+                        "secondary": "#13677b",
+                        "deep-teal": "#005F73",
+                        "tertiary-container": "#1a1c1c",
+                        "on-primary-fixed": "#1c1b1b",
+                        "surface-dim": "#dbdad9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "24px",
+                        "margin-desktop": "80px",
+                        "unit": "8px",
+                        "section-gap": "160px",
+                        "gutter": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", { "lineHeight": "42px", "fontWeight": "500" }],
+                        "headline-lg": ["48px", { "lineHeight": "56px", "fontWeight": "600" }],
+                        "label-sm": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["72px", { "lineHeight": "84px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "32px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "600" }]
+                    }
+                }
             }
-            .description { margin: 0 auto 40px; }
-            .photo-wrapper { order: -1; }
-            .profile-photo { width: 240px; height: 240px; }
-            .link-grid { justify-content: center; }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            /* Solid obsidian background */
+            color: #f9f9f9;
         }
 
-        @media (max-width: 600px) {
-            .container { padding: 0 25px; }
-            h1 { font-size: 2.8rem; }
-            .link-grid { grid-template-columns: 1fr 1fr; }
+        .nav-scrolled {
+            background-color: rgba(26, 26, 26, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .link-hover-effect {
+            position: relative;
+            display: inline-block;
+        }
+
+        .link-hover-effect::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #f9f9f9;
+            transition: width 0.3s ease;
+        }
+
+        .link-hover-effect:hover::after {
+            width: 100%;
+        }
+
+        .ghost-button-dark {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .ghost-button-dark:hover {
+            background-color: #f9f9f9;
+            color: #1a1a1a;
+            border-color: #f9f9f9;
+        }
+
+        .theme-accent {
+            color: #ffffff;
+        }
+
+        @keyframes bgShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .animated-highlight {
+            background: linear-gradient(270deg, #cc3b14, #691702, #ff3300, #cc3b14);
+            background-size: 300% 300%;
+            animation: bgShift 6s ease infinite;
+            padding: 0.35rem 1.25rem;
+            border-radius: 9999px;
+            color: #ffffff;
+            box-shadow: 0 4px 20px rgba(204, 59, 20, 0.4);
+            display: inline-block;
         }
     </style>
 </head>
-<body>
 
-    <main class="hero">
-        <div class="container">
-            <div class="hero-grid">
-                
-                <div class="hero-content">
-                    <span class="tagline">Creative Creator & Developer</span>
-                    <h1>Sang Kala Aji</h1>
-                    <p class="description">
-                        Membangun jembatan antara narasi visual yang memikat dan solusi digital yang fungsional. Berfokus pada pengembangan web yang presisi serta produksi konten kreatif yang berdampak.
-                    </p>
+<body class="font-body-md text-body-md antialiased selection:bg-surface-variant selection:text-ink-text bg-transparent">
+    <!-- Vanta Background -->
+    <div id="vanta-bg" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-500 ease-in-out py-6" id="navbar">
+        <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+            <a class="flex items-center gap-2 hover:opacity-70 transition-opacity duration-300" href="#">
+                <img alt="KALA Logo" class="h-8 w-auto invert" src="sasas.png" />
+            </a>
+            <div id="nav-menu"
+                class="hidden absolute top-full left-0 w-full bg-[#1a1a1a] flex-col items-center gap-8 py-8 border-b border-white/10 md:static md:w-auto md:bg-transparent md:flex md:flex-row md:border-none md:py-0 font-label-caps text-label-caps">
+                <a class="text-on-primary hover:text-outline-variant transition-colors link-hover-effect"
+                    href="#about">About</a>
 
-                    <div class="link-grid">
-                        <a href="karya.html" class="btn btn-primary"><i class="bi bi-grid-1x2-fill"></i> Portfolio</a>
-                        
-                        <a href="https://linkedin.com/in/sangkalaaji" target="_blank" class="btn"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                        <a href="https://github.com/lemmebeHuh" target="_blank" class="btn"><i class="fa-brands fa-github"></i> GitHub</a>
-                        
-                        <a href="https://medium.com/@sangkalaaji" target="_blank" class="btn"><i class="fa-brands fa-medium"></i> Medium</a>
-                        
-                        <a href="mailto:sangkalaaji98@gmail.com" class="btn"><i class="fa-solid fa-envelope"></i> Email</a>
-                        <a href="https://wa.me/6285795603927" target="_blank" class="btn"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-                        
-                        <a href="https://www.youtube.com/@sangkalaaji" target="_blank" class="btn"><i class="fa-brands fa-youtube"></i> YouTube</a>
-                        <a href="https://www.instagram.com/aji___sk/" target="_blank" class="btn"><i class="fa-brands fa-instagram"></i> Instagram</a>
-                        <a href="https://www.strava.com/athletes/90824258" target="_blank" class="btn"><i class="fa-brands fa-strava"></i> Strava</a>
-
-                    </div>
-                </div>
-
-                <div class="photo-wrapper">
-                    <img src="dasa.png" alt="Sang Kala Aji" class="profile-photo">
-                </div>
+                <a class="text-on-primary hover:text-outline-variant transition-colors link-hover-effect"
+                    href="#connect">Contact</a>
 
             </div>
-        </div>
-    </main>
 
-    <footer>
-        <div class="container">
-            <img src="sasas.png" alt="Logo" class="footer-logo">
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-toggle" class="md:hidden text-on-primary p-2">
+                <span class="material-symbols-outlined" style="font-size: 24px;">menu</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center pt-36 pb-section-gap overflow-hidden"
+        id="about">
+        <div
+            class="relative z-10 w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+            <div
+                class="md:col-span-6 md:col-start-1 flex flex-col items-center md:items-start text-center md:text-left gap-8 order-2 md:order-1">
+                <div class="flex flex-col gap-2">
+                    <span class="font-label-caps text-label-caps tracking-[0.2em] uppercase animated-highlight w-max mx-auto md:mx-0">Creative Creator &amp; Developer</span>
+                    <h1
+                        class="font-headline-lg text-headline-lg md:font-display-lg md:text-[96px] md:leading-[100px] text-on-primary tracking-tighter">
+                        Sang Kala Aji
+                    </h1>
+                </div>
+                <p class="font-body-lg text-body-lg text-outline-variant max-w-2xl">
+                    Membangun jembatan antara narasi visual yang memikat dan solusi digital yang fungsional. Berfokus
+                    pada pengembangan web yang presisi serta produksi konten kreatif yang berdampak.
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-4">
+                    <a class="px-10 py-4 bg-on-primary text-primary font-label-caps text-label-caps hover:bg-outline-variant transition-colors"
+                        href="karya.html">
+                        View Portfolio
+                    </a>
+                    <a class="px-10 py-4 ghost-button-dark text-on-primary font-label-caps text-label-caps"
+                        href="https://wa.me/6285795603927" target="_blank">
+                        Connect
+                    </a>
+                </div>
+            </div>
+            <div
+                class="md:col-span-5 md:col-start-8 flex justify-center mb-12 md:mb-0 md:mt-0 relative order-1 md:order-2">
+                <div
+                    class="absolute inset-0 bg-outline/10 rounded-full md:rounded-t-[200px] md:rounded-b-none blur-3xl transform scale-90">
+                </div>
+                <div
+                    class="relative w-64 h-64 md:w-full md:h-auto md:max-w-[420px] md:aspect-[4/5] rounded-full md:rounded-t-[200px] md:rounded-b-none overflow-hidden border border-outline/20 bg-inverse-surface mx-auto">
+                    <img alt="Sang Kala Aji Profile Photo"
+                        class="w-full h-full object-cover object-center grayscale hover:grayscale-0 transition-all duration-700"
+                        src="AjiS.jpg" />
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto" id="connect">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+            <div class="md:col-span-4 md:col-start-1 mb-12 md:mb-0">
+                <h2 class="font-headline-lg text-headline-lg text-on-primary mb-6">Digital Presence</h2>
+                <div class="w-12 h-[1px] bg-outline/30 mb-8"></div>
+                <p class="font-body-md text-body-md text-outline-variant">
+                    Terhubung dan berkolaborasi melalui berbagai platform digital. Menjelajahi ruang kreatif dan
+                    teknikal.
+                </p>
+            </div>
+            <div class="md:col-span-7 md:col-start-6">
+                <ul class="flex flex-col gap-4 font-label-caps text-label-caps text-on-primary">
+                    <li class="border-b border-outline/20">
+                        <a class="flex justify-between items-center group py-4"
+                            href="https://linkedin.com/in/sangkalaaji" target="_blank">
+                            <div class="flex items-center gap-4"><span
+                                    class="group-hover:theme-accent transition-colors">LinkedIn</span></div>
+                            <span
+                                class="material-symbols-outlined text-outline group-hover:text-on-primary transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1">arrow_outward</span>
+                        </a>
+                    </li>
+                    <li class="border-b border-outline/20">
+                        <a class="flex justify-between items-center group py-4" href="https://github.com/lemmebeHuh"
+                            target="_blank">
+                            <div class="flex items-center gap-4"><span
+                                    class="group-hover:theme-accent transition-colors">GitHub</span></div>
+                            <span
+                                class="material-symbols-outlined text-outline group-hover:text-on-primary transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1">arrow_outward</span>
+                        </a>
+                    </li>
+                    <li class="border-b border-outline/20">
+                        <a class="flex justify-between items-center group py-4" href="https://medium.com/@sangkalaaji"
+                            target="_blank">
+                            <div class="flex items-center gap-4"><span
+                                    class="group-hover:theme-accent transition-colors">Medium</span></div>
+                            <span
+                                class="material-symbols-outlined text-outline group-hover:text-on-primary transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1">arrow_outward</span>
+                        </a>
+                    </li>
+                    <li class="border-b border-outline/20">
+                        <a class="flex justify-between items-center group py-4" href="mailto:sangkalaaji98@gmail.com">
+                            <div class="flex items-center gap-4"><span
+                                    class="group-hover:theme-accent transition-colors">Email</span></div>
+                            <span
+                                class="material-symbols-outlined text-outline group-hover:text-on-primary transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1">arrow_outward</span>
+                        </a>
+                    </li>
+                    <li class="border-b border-outline/20">
+                        <a class="flex justify-between items-center group py-4" href="https://wa.me/6285795603927"
+                            target="_blank">
+                            <div class="flex items-center gap-4"><span
+                                    class="group-hover:theme-accent transition-colors">WhatsApp</span></div>
+                            <span
+                                class="material-symbols-outlined text-outline group-hover:text-on-primary transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1">arrow_outward</span>
+                        </a>
+                    </li>
+                    <li class="border-b border-outline/20">
+                        <a class="flex justify-between items-center group py-4"
+                            href="https://www.youtube.com/@sangkalaaji" target="_blank">
+                            <div class="flex items-center gap-4"><span
+                                    class="group-hover:theme-accent transition-colors">YouTube</span></div>
+                            <span
+                                class="material-symbols-outlined text-outline group-hover:text-on-primary transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1">arrow_outward</span>
+                        </a>
+                    </li>
+                    <li class="border-b border-outline/20">
+                        <a class="flex justify-between items-center group py-4"
+                            href="https://www.instagram.com/aji___sk/" target="_blank">
+                            <div class="flex items-center gap-4"><span
+                                    class="group-hover:theme-accent transition-colors">Instagram</span></div>
+                            <span
+                                class="material-symbols-outlined text-outline group-hover:text-on-primary transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1">arrow_outward</span>
+                        </a>
+                    </li>
+                    <li class="border-b border-outline/20">
+                        <a class="flex justify-between items-center group py-4"
+                            href="https://www.strava.com/athletes/90824258" target="_blank">
+                            <div class="flex items-center gap-4"><span
+                                    class="group-hover:theme-accent transition-colors">Strava</span></div>
+                            <span
+                                class="material-symbols-outlined text-outline group-hover:text-on-primary transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1">arrow_outward</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="w-full py-section-gap border-t border-outline/10 mt-24">
+        <div
+            class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto gap-gutter text-center md:text-left">
+            <div class="flex flex-col items-center md:items-start gap-4">
+                <span
+                    class="font-headline-md text-headline-md text-on-primary font-bold tracking-tighter flex items-center gap-2">
+                    <img alt="KALA Logo" class="h-8 w-auto invert" src="sasas.png" />
+                </span>
+                <p class="font-body-md text-body-md text-outline-variant">
+                    © 2024 KALA. Built for the elite creative professional.
+                </p>
+            </div>
+            <div
+                class="flex flex-wrap justify-center md:justify-start gap-8 font-label-caps text-label-caps mt-4 md:mt-0">
+                <a class="text-on-primary hover:theme-accent transition-colors underline decoration-1 underline-offset-4"
+                    href="https://linkedin.com/in/sangkalaaji">LinkedIn</a>
+                <a class="text-on-primary hover:theme-accent transition-colors underline decoration-1 underline-offset-4"
+                    href="https://github.com/lemmebeHuh">GitHub</a>
+                <a class="text-on-primary hover:theme-accent transition-colors underline decoration-1 underline-offset-4"
+                    href="https://www.instagram.com/aji___sk/">Instagram</a>
+            </div>
         </div>
     </footer>
 
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        if (mobileMenuToggle && navMenu) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('hidden');
+                navMenu.classList.toggle('flex');
+            });
+
+            // Close menu when clicking a link
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.add('hidden');
+                    navMenu.classList.remove('flex');
+                });
+            });
+        }
+    </script>
+
+    <!-- Vanta.js Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+    <script>
+        VANTA.FOG({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            highlightColor: 0xcc3b14, // Api / Ember
+            midtoneColor: 0x691702,   // Merah darah gelap
+            lowlightColor: 0x110000,
+            baseColor: 0x0,
+            blurFactor: 0.90,
+            speed: 1.50,
+            zoom: 0.30
+        })
+    </script>
 </body>
+
 </html>
