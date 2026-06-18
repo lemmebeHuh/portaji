@@ -180,10 +180,10 @@
     <!-- Vanta Background -->
     <div id="vanta-bg" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
     <!-- TopNavBar -->
-    <nav class="fixed top-0 w-full z-50 transition-all duration-500 ease-in-out py-6" id="navbar">
+    <nav class="fixed top-0 w-full z-50 transition-all duration-500 ease-in-out py-4 md:py-6" id="navbar">
         <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
             <a class="flex items-center gap-2 hover:opacity-70 transition-opacity duration-300" href="#">
-                <img alt="KALA Logo" class="h-8 w-auto invert" src="sasas.png" />
+                <img alt="KALA Logo" class="h-6 md:h-8 w-auto invert" src="sasas.png" />
             </a>
             <div id="nav-menu"
                 class="hidden absolute top-full left-0 w-full bg-[#1a1a1a] flex-col items-center gap-8 py-8 border-b border-white/10 md:static md:w-auto md:bg-transparent md:flex md:flex-row md:border-none md:py-0 font-label-caps text-label-caps">
@@ -203,41 +203,41 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative min-h-screen flex items-center justify-center pt-28 md:pt-36 pb-12 md:pb-section-gap overflow-hidden"
+    <header class="relative min-h-screen flex items-center justify-center pt-20 md:pt-36 pb-12 md:pb-section-gap overflow-hidden"
         id="about">
         <div
             class="relative z-10 w-full max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
             <div
-                class="md:col-span-6 md:col-start-1 flex flex-col items-center md:items-start text-center md:text-left gap-5 md:gap-8 order-2 md:order-1">
-                <div class="flex flex-col gap-2">
-                    <span class="font-label-caps text-label-caps tracking-[0.2em] uppercase animated-highlight w-max mx-auto md:mx-0">Creative Creator &amp; Developer</span>
+                class="md:col-span-6 md:col-start-1 flex flex-col items-center md:items-start text-center md:text-left gap-3 md:gap-8 order-2 md:order-1">
+                <div class="flex flex-col gap-1 md:gap-2">
+                    <span class="font-label-caps text-[10px] md:text-label-caps tracking-[0.2em] uppercase animated-highlight w-max mx-auto md:mx-0">Creative Creator &amp; Developer</span>
                     <h1
-                        class="font-headline-lg text-headline-lg md:font-display-lg md:text-[96px] md:leading-[100px] text-on-primary tracking-tighter">
+                        class="text-3xl md:font-display-lg md:text-[96px] md:leading-[100px] text-on-primary tracking-tighter font-bold">
                         Sang Kala Aji
                     </h1>
                 </div>
-                <p class="font-body-lg text-body-lg text-outline-variant max-w-2xl">
+                <p class="text-sm md:text-body-lg text-outline-variant max-w-2xl leading-relaxed">
                     Membangun jembatan antara narasi visual yang memikat dan solusi digital yang fungsional. Berfokus
                     pada pengembangan web yang presisi serta produksi konten kreatif yang berdampak.
                 </p>
                 <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-4">
-                    <a class="px-10 py-4 bg-on-primary text-primary font-label-caps text-label-caps hover:bg-outline-variant transition-colors"
+                    <a class="px-6 py-3 md:px-10 md:py-4 bg-on-primary text-primary font-label-caps text-xs md:text-label-caps hover:bg-outline-variant transition-colors"
                         href="karya.html">
                         View Portfolio
                     </a>
-                    <a class="px-10 py-4 ghost-button-dark text-on-primary font-label-caps text-label-caps"
+                    <a class="px-6 py-3 md:px-10 md:py-4 ghost-button-dark text-on-primary font-label-caps text-xs md:text-label-caps"
                         href="https://wa.me/6285795603927" target="_blank">
                         Connect
                     </a>
                 </div>
             </div>
             <div
-                class="md:col-span-5 md:col-start-8 flex justify-center mb-8 md:mb-0 md:mt-0 relative order-1 md:order-2">
+                class="md:col-span-5 md:col-start-8 flex justify-center mb-4 md:mb-0 md:mt-0 relative order-1 md:order-2">
                 <div
                     class="absolute inset-0 bg-outline/10 rounded-full md:rounded-t-[200px] md:rounded-b-none blur-3xl transform scale-90">
                 </div>
                 <div
-                    class="relative w-48 h-48 sm:w-56 sm:h-56 md:w-full md:h-auto md:max-w-[420px] md:aspect-[4/5] rounded-full md:rounded-t-[200px] md:rounded-b-none overflow-hidden border border-outline/20 bg-inverse-surface mx-auto">
+                    class="relative w-36 h-36 sm:w-48 sm:h-48 md:w-full md:h-auto md:max-w-[420px] md:aspect-[4/5] rounded-full md:rounded-t-[200px] md:rounded-b-none overflow-hidden border border-outline/20 bg-inverse-surface mx-auto">
                     <img alt="Sang Kala Aji Profile Photo"
                         class="w-full h-full object-cover object-center grayscale hover:grayscale-0 transition-all duration-700"
                         src="AjiS.jpg" />
